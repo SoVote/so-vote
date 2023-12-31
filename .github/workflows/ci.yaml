@@ -60,7 +60,8 @@ jobs:
       - name: Release
         id: release
         run: |
-          BRANCH=$GITHUB_HEAD_REF yarn deploy --filter=@rainbow-husky/auth-service-infra
+          export PR_NUMBER=${{ github.event.pull_request.number }}
+          yarn deploy --filter=@rainbow-husky/auth-service-infra
 
     #      - name: Test
     #        run: yarn test
@@ -116,7 +117,9 @@ jobs:
       - name: Release
         env:
           WWW_ARTIFACTS: ${{needs.auth-service.outputs.auth-service-function-name}}
-        run: yarn deploy --filter=@rainbow-husky/www-app-infra
+        run: |
+          export PR_NUMBER=${{ github.event.pull_request.number }}
+          yarn deploy --filter=@rainbow-husky/www-app-infra
 
 #      - name: Test
 #        run: yarn test
