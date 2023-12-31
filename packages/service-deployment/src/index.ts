@@ -40,7 +40,7 @@ program.command('deploy')
         if (!value) throw new Error(`Missing output. Service configuration specifies there should be a pulumi output ${output.pulumiOutputKey} but it was not found in: ${pulumiOutputs}`)
         const exportLine = `${output.githubOutputKey}=${value}`
         console.log(`Outputting: ${exportLine}`)
-        exec(`echo "${exportLine}" >> outputs.sh`)
+        exec(`echo "${exportLine}" >> ${process.env.GITHUB_OUTPUT}`)
       })
     }
     console.log('Done')
