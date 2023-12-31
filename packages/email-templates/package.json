@@ -1,0 +1,11 @@
+{
+  "name": "@rainbow-husky/email-templates",
+  "packageManager": "yarn@3.4.1",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@rainbow-husky/common-components": "workspace:^",
+    "@react-email/components": "0.0.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
