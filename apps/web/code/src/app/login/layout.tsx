@@ -1,6 +1,6 @@
 
 import { SendEmailCommand, SESv2Client } from "@aws-sdk/client-sesv2";
-import { Logo } from "@rainbow-husky/common-components";
+import { Logo } from "@rainbow-husky/common-ui";
 import { ReactNode,  } from "react";
 
 const client = new SESv2Client();

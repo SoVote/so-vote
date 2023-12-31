@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { createMenuItemLink } from "@/components/createMenuItemLink";
 import { MenuItem } from "@/components/MenuItem";
-import { Logo } from "@rainbow-husky/common-components";
+import { Logo } from "@rainbow-husky/common-ui";
 
 export const LogoMenu = () => {
   return (

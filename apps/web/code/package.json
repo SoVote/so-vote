@@ -18,7 +18,7 @@
     "@aws-sdk/client-sesv2": "^3.465.0",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "@rainbow-husky/common-components": "workspace:^",
+    "@rainbow-husky/common-ui": "workspace:^",
     "@rainbow-husky/email-templates": "workspace:^",
     "classnames": "^2.3.2",
     "iron-session": "^8.0.1",
