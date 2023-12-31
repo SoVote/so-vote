@@ -1,0 +1,12 @@
+name: global
+runtime: nodejs
+description: Global infrastructure underpinning Rainbow Husky
+#config:
+#  github-token:
+#    type: string
+#  aws-access-key-id:
+#    type: string
+#  aws-secret-access-key:
+#    type: string
+#  pulumi-state-s3-bucket:
+#    type: string

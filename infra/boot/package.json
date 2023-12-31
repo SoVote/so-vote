@@ -1,0 +1,17 @@
+{
+  "name": "@rainbow-husky/bootstrap-infrastructure",
+  "main": "src/index.ts",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "yarn@3.4.1",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "lint": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.56.0",
+    "eslint": "^8.56.0"
+  }
+}
