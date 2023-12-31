@@ -48,7 +48,7 @@ jobs:
       - name: Get AWS Role
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
-          pl stack select boot
+          pulumi stack select boot
           AWS_ROLE_ARN=$(pulumi stack output ghActionsRoleArn)
           echo "AWS_ROLE_ARN=${AWS_ROLE_ARN}" >> "$GITHUB_ENV"
 
@@ -106,7 +106,7 @@ jobs:
       - name: Get AWS Role
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
-          pl stack select boot
+          pulumi stack select boot
           AWS_ROLE_ARN=$(pulumi stack output ghActionsRoleArn)
           echo "AWS_ROLE_ARN=${AWS_ROLE_ARN}" >> "$GITHUB_ENV"
 

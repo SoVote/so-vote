@@ -29,6 +29,8 @@ program.command('deploy')
     exec('pulumi login s3://rainbow-husky-pulumi-state')
     const stack = branch === 'main' ? `prod-${config.name}-service` : `dev-${process.env.PR_NUMBER}-${config.name}-service`
     exec(`pulumi stack select ${stack} -c`)
+    exec(`pulumi config set branch-name "${branch}"`)
+    exec(`pulumi config set pr-number "${process.env.PR_NUMBER}"`)
     exec('pulumi up --yes')
     console.log('Done')
   })
