@@ -20,7 +20,7 @@ export const ghActionsRole = new aws.iam.Role(`${resourcePrefix}-gh-actions-role
             "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
           },
           StringLike: {
-            "token.actions.githubusercontent.com:sub": "repo:JonNode28/turbo-rainbow-husky:*"
+            "token.actions.githubusercontent.com:sub": "repo:SoVote/so-vote:*"
           }
         },
         Effect: "Allow",
