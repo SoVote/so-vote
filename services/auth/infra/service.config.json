@@ -1,3 +1,9 @@
 {
-  "name": "auth-service"
+  "name": "auth-service",
+  "outputs": [
+    {
+      "pulumiOutputKey": "someRandomOutput",
+      "githubOutputKey": "AUTH_SERVICE_FUNCTION_NAME"
+    }
+  ]
 }

@@ -61,8 +61,6 @@ jobs:
         id: release
         run: |
           BRANCH=$GITHUB_HEAD_REF yarn deploy -- --filter=@rainbow-husky/auth-service-infra
-          AUTH_SERVICE_FUNCTION_NAME=$(pulumi stack output someRandomOutput --cwd ./services/auth/infra)
-          echo "auth-service-function-name=$AUTH_SERVICE_FUNCTION_NAME" >> "$GITHUB_OUTPUT"
 
     #      - name: Test
     #        run: yarn test
