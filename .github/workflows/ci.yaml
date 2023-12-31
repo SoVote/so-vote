@@ -30,8 +30,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - name: Pulumi
+      - name: Use Pulumi
         uses: pulumi/actions@v4
+
+      - name: Set up Pulumi
+        run: |
+          export PULUMI_CONFIG_PASSPHRASE=
+          pulumi login s3://rainbow-husky-pulumi-state
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
@@ -47,7 +52,6 @@ jobs:
 
       - name: Get AWS Role
         run: |
-          export PULUMI_CONFIG_PASSPHRASE=
           pulumi stack select boot
           AWS_ROLE_ARN=$(pulumi stack output ghActionsRoleArn)
           echo "AWS_ROLE_ARN=${AWS_ROLE_ARN}" >> "$GITHUB_ENV"
@@ -62,8 +66,7 @@ jobs:
       - name: Release
         id: release
         run: |
-          BRANCH=$GITHUB_HEAD_REF yarn deploy --filter=auth-service-infra
-          export PULUMI_CONFIG_PASSPHRASE=
+          BRANCH=$GITHUB_HEAD_REF yarn deploy --filter=@rainbow-husky/auth-service-infra
           AUTH_SERVICE_FUNCTION_NAME=$(pulumi stack output someRandomOutput --cwd ./services/auth/infra)
           echo "auth-service-function-name=$AUTH_SERVICE_FUNCTION_NAME" >> "$GITHUB_OUTPUT"
 
@@ -94,6 +97,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
+      - name: Use Pulumi
+        uses: pulumi/actions@v4
+
+      - name: Set up Pulumi
+        run: |
+          export PULUMI_CONFIG_PASSPHRASE=
+          pulumi login s3://rainbow-husky-pulumi-state
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -105,7 +116,6 @@ jobs:
 
       - name: Get AWS Role
         run: |
-          export PULUMI_CONFIG_PASSPHRASE=
           pulumi stack select boot
           AWS_ROLE_ARN=$(pulumi stack output ghActionsRoleArn)
           echo "AWS_ROLE_ARN=${AWS_ROLE_ARN}" >> "$GITHUB_ENV"
@@ -120,7 +130,7 @@ jobs:
       - name: Release
         env:
           WWW_ARTIFACTS: ${{needs.auth-service.outputs.auth-service-function-name}}
-        run: yarn deploy --filter=docs
+        run: yarn deploy --filter=@rainbow-husky/www-app-infra
 
 #      - name: Test
 #        run: yarn test
