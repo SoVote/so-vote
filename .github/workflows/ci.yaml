@@ -30,14 +30,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - name: Use Pulumi
-        uses: pulumi/actions@v4
-
-      - name: Set up Pulumi
-        run: |
-          export PULUMI_CONFIG_PASSPHRASE=
-          pulumi login s3://rainbow-husky-pulumi-state
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -50,18 +42,20 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Get AWS Role
-        run: |
-          pulumi stack select boot
-          AWS_ROLE_ARN=$(pulumi stack output ghActionsRoleArn)
-          echo "AWS_ROLE_ARN=${AWS_ROLE_ARN}" >> "$GITHUB_ENV"
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: eu-west-1
-          role-to-assume: ${AWS_ROLE_ARN}
+          role-to-assume: ${{ secrets.GH_ACTIONS_ROLE_ARN }}
           role-session-name: AuthSession
+
+      - name: Use Pulumi
+        uses: pulumi/actions@v4
+
+      - name: Set up Pulumi
+        run: |
+          export PULUMI_CONFIG_PASSPHRASE=
+          pulumi login s3://rainbow-husky-pulumi-state
 
       - name: Release
         id: release
@@ -97,14 +91,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - name: Use Pulumi
-        uses: pulumi/actions@v4
-
-      - name: Set up Pulumi
-        run: |
-          export PULUMI_CONFIG_PASSPHRASE=
-          pulumi login s3://rainbow-husky-pulumi-state
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -114,18 +100,20 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Get AWS Role
-        run: |
-          pulumi stack select boot
-          AWS_ROLE_ARN=$(pulumi stack output ghActionsRoleArn)
-          echo "AWS_ROLE_ARN=${AWS_ROLE_ARN}" >> "$GITHUB_ENV"
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: eu-west-1
-          role-to-assume: ${AWS_ROLE_ARN}
+          role-to-assume: ${{ secrets.GH_ACTIONS_ROLE_ARN }}
           role-session-name: DocsSession
+
+      - name: Use Pulumi
+        uses: pulumi/actions@v4
+
+      - name: Set up Pulumi
+        run: |
+          export PULUMI_CONFIG_PASSPHRASE=
+          pulumi login s3://rainbow-husky-pulumi-state
 
       - name: Release
         env:
