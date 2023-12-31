@@ -33,7 +33,7 @@ program.command('deploy')
     exec('pulumi up --yes')
     if (config.outputs){
       console.log('Outputting Pulumi outputs from the step')
-      const pulumiOutputs = JSON.parse(exec('pl stack output --json'))
+      const pulumiOutputs = JSON.parse(exec('pulumi stack output --json'))
       config.outputs.forEach((output) => {
         const value = pulumiOutputs[output.githubOutputKey]
         if (!value) throw new Error(`Missing output. Service configuration specifies there should be a pulumi output ${output.pulumiOutputKey} but it was not found in: ${pulumiOutputs}`)
