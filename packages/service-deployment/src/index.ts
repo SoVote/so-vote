@@ -15,7 +15,6 @@ program.command('deploy')
   .option('--config', 'The path to the config file', 'service.config.json')
   .action(async (options) => {
     set('+e')
-    exec('exect SOME_ENV=some value!')
     // exec('export')
     let branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME
     if (process.env.CI !== 'true') {
