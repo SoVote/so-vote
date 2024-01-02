@@ -14,7 +14,7 @@ program
 program.command('deploy')
   .option('--config', 'The path to the config file', 'service.config.json')
   .action(async (options) => {
-    set('+e')
+    set('-e')
     exec('export')
     let branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME
     if (process.env.CI !== 'true') {
@@ -36,7 +36,7 @@ program.command('deploy')
       const pulumiOutputs = JSON.parse(exec('pulumi stack output --json'))
       config.outputs.forEach((output) => {
         const value = pulumiOutputs[output.githubOutputKey]
-        if (!value) throw new Error(`Missing output. Service configuration specifies there should be a pulumi output ${output.pulumiOutputKey} but it was not found in: ${pulumiOutputs}`)
+        if (!value) throw new Error(`Missing output. Service configuration specifies there should be a pulumi output ${output.pulumiOutputKey} but it was not found in: ${JSON.stringify(pulumiOutputs, null, 2)}`)
         const exportLine = `${output.githubOutputKey}=${value}`
         console.log(`Outputting: ${exportLine}`)
         exec(`echo "${exportLine}" >> ${process.env.GITHUB_OUTPUT}`)
