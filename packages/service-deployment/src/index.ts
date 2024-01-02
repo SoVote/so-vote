@@ -24,6 +24,7 @@ program.command('deploy')
     const configString = await fs.readFile(`./${options.config}`, 'utf-8')
     const config = JSON.parse(configString) as ServiceDeploymentConfig;
     console.log(`Deploying with config: ${JSON.stringify(config)}`)
+    exec('find ..')
     if (!branch) throw new Error('Current branch is not specified')
     if (branch !== 'main' && !process.env.PR_NUMBER) throw new Error('PR number is required to deploy non-prod envs')
     const stack = branch === 'main' ? `prod-${config.name}-service` : `dev-${process.env.PR_NUMBER}-${config.name}-service`
