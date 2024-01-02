@@ -2,6 +2,7 @@
     "name": "@rainbow-husky/auth-service-infra",
     "main": "src/index.ts",
     "scripts": {
+        "build": "tsc",
         "deploy": "deploy-service deploy"
     },
     "devDependencies": {
