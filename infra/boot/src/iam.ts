@@ -42,7 +42,15 @@ export const ghActionsRole = new aws.iam.Role(`${resourcePrefix}-gh-actions-role
           ],
           Effect: "Allow",
           Resource: "*",
-          Sid: "Statement1"
+          Sid: "S3"
+        },
+        {
+          Action: [
+            "iam:*"
+          ],
+          Effect: "Allow",
+          Resource: "*",
+          Sid: "IAM"
         }
       ]
     }),
