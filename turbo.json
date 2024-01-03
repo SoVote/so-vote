@@ -4,7 +4,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -14,7 +14,6 @@
       "persistent": true
     },
     "deploy": {
-      "dependsOn": [ "lint", "^build", "@rainbow-husky/auth-service-code#build" ],
       "cache": false
     }
   }

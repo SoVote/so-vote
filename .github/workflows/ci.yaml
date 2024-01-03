@@ -61,7 +61,10 @@ jobs:
         id: release
         run: |
           export PR_NUMBER=${{ github.event.pull_request.number }}
+          yarn build --filter=@rainbow-husky/auth-service-code
+          yarn build --filter=@rainbow-husky/auth-service-infra
           yarn deploy --filter=@rainbow-husky/auth-service-infra
+          
 
     #      - name: Test
     #        run: yarn test
