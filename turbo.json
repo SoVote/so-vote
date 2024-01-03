@@ -14,7 +14,7 @@
       "persistent": true
     },
     "deploy": {
-      "dependsOn": [ "lint", "^build", "build" ],
+      "dependsOn": [ "lint", "^build", "@rainbow-husky/auth-service-code#build" ],
       "cache": false
     }
   }
