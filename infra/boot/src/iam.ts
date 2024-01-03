@@ -32,7 +32,7 @@ export const ghActionsRole = new aws.iam.Role(`${resourcePrefix}-gh-actions-role
     "Version": "2008-10-17"
   }),
   inlinePolicies: [{
-    name: "github-actions-build-policy",
+    name: "github-actions-deploy-policy",
     policy: JSON.stringify({
       Version: "2012-10-17",
       Statement: [
