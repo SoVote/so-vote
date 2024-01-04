@@ -40,8 +40,7 @@ export const ghActionsRole = new aws.iam.Role(`${resourcePrefix}-gh-actions-role
           Action: [
             's3:*',
             'iam:*',
-            'logs:CreateLogGroup',
-            'logs:PutRetentionPolicy'
+            'logs:*',
           ],
           Effect: 'Allow',
           Resource: '*',
