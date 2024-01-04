@@ -33,7 +33,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn
+        run: yarn workspaces focus @rainbow-husky/bootstrap-infrastructure
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -53,5 +53,6 @@ jobs:
       - name: Deploy
         run: |
           cd infra/boot
+          export
           pulumi stack select boot -c
           pulumi up --yes
