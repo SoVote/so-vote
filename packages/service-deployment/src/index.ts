@@ -20,12 +20,11 @@ program.command('deploy')
     if (process.env.CI !== 'true') {
       branch = exec('git rev-parse --abbrev-ref HEAD')
     }
-    env['PULUMI_CONFIG_PASSPHRASE'] = ''
     const configString = await fs.readFile(`./${options.config}`, 'utf-8')
     const config = JSON.parse(configString) as ServiceDeploymentConfig;
     console.log(`Deploying with config: ${JSON.stringify(config)}`)
-    exec('pwd')
-    exec('find ../code')
+    // exec('pwd')
+    // exec('find ../code')
     if (!branch) throw new Error('Current branch is not specified')
     if (branch !== 'main' && !process.env.PR_NUMBER) throw new Error('PR number is required to deploy non-prod envs')
     const stack = branch === 'main' ? `prod-${config.name}-service` : `dev-${process.env.PR_NUMBER}-${config.name}-service`
