@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn -v
-          yarn workspaces focus @rainbow-husky/bootstrap-infrastructure
+          yarn workspace focus @rainbow-husky/bootstrap-infrastructure
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
