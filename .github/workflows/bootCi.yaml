@@ -54,6 +54,7 @@ jobs:
 
       - name: Deploy
         run: |
+          export PULUMI_CONFIG_PASSPHRASE=
           cd infra/boot
           export
           pulumi stack select boot -c
