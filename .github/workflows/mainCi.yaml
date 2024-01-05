@@ -62,12 +62,12 @@ jobs:
 
       - name: Set up Pulumi
         run: |
-          export PULUMI_CONFIG_PASSPHRASE=
           pulumi login s3://rainbow-husky-pulumi-state
 
       - name: Release
         id: release
         run: |
+          export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}
           yarn build --filter=@rainbow-husky/auth-service-code
           yarn build --filter=@rainbow-husky/auth-service-infra
@@ -122,13 +122,13 @@ jobs:
 
       - name: Set up Pulumi
         run: |
-          export PULUMI_CONFIG_PASSPHRASE=
           pulumi login s3://rainbow-husky-pulumi-state
 
       - name: Release
         env:
           WWW_ARTIFACTS: ${{needs.auth-service.outputs.auth-service-function-name}}
         run: |
+          export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}
           yarn deploy --filter=@rainbow-husky/www-app-infra
 
