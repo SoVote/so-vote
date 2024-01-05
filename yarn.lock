@@ -2813,6 +2813,12 @@ __metadata:
 "@rainbow-husky/global-infrastructure@workspace:infra/global":
   version: 0.0.0-use.local
   resolution: "@rainbow-husky/global-infrastructure@workspace:infra/global"
+  dependencies:
+    "@pulumi/aws": ^6.0.0
+    "@pulumi/awsx": ^2.0.2
+    "@pulumi/pulumi": ^3.0.0
+    "@rainbow-husky/service-deployment": "workspace:^"
+    "@types/node": ^18
   languageName: unknown
   linkType: soft
 

@@ -33,9 +33,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: |
-          yarn plugin import workspace-tools
-          yarn workspaces focus @rainbow-husky/bootstrap-infrastructure
+        run: yarn workspaces focus @rainbow-husky/bootstrap-infrastructure
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
