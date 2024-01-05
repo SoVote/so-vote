@@ -2573,7 +2573,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/aws@npm:^6.0.0, @pulumi/aws@npm:^6.9.0":
+"@pulumi/aws@npm:^6.0.0, @pulumi/aws@npm:^6.17.0, @pulumi/aws@npm:^6.9.0":
   version: 6.17.0
   resolution: "@pulumi/aws@npm:6.17.0"
   dependencies:
@@ -2599,7 +2599,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/awsx@npm:^2.0.2":
+"@pulumi/awsx@npm:^2.0.2, @pulumi/awsx@npm:^2.4.0":
   version: 2.4.0
   resolution: "@pulumi/awsx@npm:2.4.0"
   dependencies:
@@ -2666,6 +2666,40 @@ __metadata:
     typescript: ~3.8.3
     upath: ^1.1.0
   checksum: b899a4e4f642692302020c3a7016878e806043d8c3a4f00ad198ffba057d60841eefd192545cfa9687f630c5c77e8f5545a618da59bbde9012a66de84beca3f1
+  languageName: node
+  linkType: hard
+
+"@pulumi/pulumi@npm:^3.100.0":
+  version: 3.100.0
+  resolution: "@pulumi/pulumi@npm:3.100.0"
+  dependencies:
+    "@grpc/grpc-js": 1.9.6
+    "@logdna/tail-file": ^2.0.6
+    "@opentelemetry/api": ^1.2.0
+    "@opentelemetry/exporter-zipkin": ^1.6.0
+    "@opentelemetry/instrumentation": ^0.32.0
+    "@opentelemetry/instrumentation-grpc": ^0.32.0
+    "@opentelemetry/resources": ^1.6.0
+    "@opentelemetry/sdk-trace-base": ^1.6.0
+    "@opentelemetry/sdk-trace-node": ^1.6.0
+    "@opentelemetry/semantic-conventions": ^1.6.0
+    "@pulumi/query": ^0.3.0
+    "@types/google-protobuf": ^3.15.5
+    execa: ^5.1.0
+    google-protobuf: ^3.5.0
+    ini: ^2.0.0
+    js-yaml: ^3.14.0
+    minimist: ^1.2.6
+    normalize-package-data: ^3.0.0
+    pkg-dir: ^7.0.0
+    read-package-tree: ^5.3.1
+    require-from-string: ^2.0.1
+    semver: ^7.5.2
+    source-map-support: ^0.5.6
+    ts-node: ^7.0.1
+    typescript: ~3.8.3
+    upath: ^1.1.0
+  checksum: ccd3c378fe4491f9ebdf8a64395cbd0d303292a9215d47ca909a0173b966e85c2c73b7057d50b00a6caf03ad61a5e17aa2d5d38f6614df718f141d03d25b854c
   languageName: node
   linkType: hard
 
@@ -2740,6 +2774,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rainbow-husky/bootstrap-infrastructure@workspace:infra/boot"
   dependencies:
+    "@pulumi/aws": ^6.17.0
+    "@pulumi/awsx": ^2.4.0
+    "@pulumi/pulumi": ^3.100.0
     "@types/eslint": ^8.56.0
     eslint: ^8.56.0
   languageName: unknown
