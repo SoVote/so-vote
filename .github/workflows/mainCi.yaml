@@ -33,7 +33,7 @@ jobs:
       - name: Cache turbo build setup
         uses: actions/cache@v3
         with:
-          path: .dist
+          path: .turbo
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
@@ -96,7 +96,7 @@ jobs:
       - name: Cache turbo build setup
         uses: actions/cache@v3
         with:
-          path: .open-next
+          path: .turbo
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
