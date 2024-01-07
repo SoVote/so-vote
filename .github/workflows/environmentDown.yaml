@@ -1,0 +1,44 @@
+name: Environment Down
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+
+  destroy:
+    runs-on: ubuntu-latest
+
+    outputs:
+      artifacts: ${{ steps.build.outputs.artifacts }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.GH_ACTIONS_ROLE_ARN }}
+          role-session-name: AuthSession
+
+      - name: Pulumi
+        uses: pulumi/actions@v4
+
+      - name: Destroy
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
+        run: |
+          cd infra/environment
+          ./destroy.sh

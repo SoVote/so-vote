@@ -3,7 +3,8 @@
     "main": "src/index.ts",
     "scripts": {
         "build": "",
-        "deploy": "deploy-service deploy"
+        "deploy": "deploy-service deploy",
+        "destroy": "deploy-service destroy"
     },
     "devDependencies": {
         "@types/node": "^18"

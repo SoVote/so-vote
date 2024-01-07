@@ -1,4 +1,4 @@
-name: Boot CI
+name: Boot Up
 
 on:
   push:
