@@ -1,4 +1,4 @@
-name: Boot Up
+name: Global Up
 
 on:
   push:
