@@ -41,7 +41,11 @@ export const ghActionsRole = new aws.iam.Role(`${resourcePrefix}-gh-actions-role
             's3:*',
             'iam:*',
             'logs:*',
-            'lambda:*'
+            'lambda:*',
+            'ses:*',
+            'route53:*',
+            'acm:*',
+            'route53:*'
           ],
           Effect: 'Allow',
           Resource: '*',
