@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
 import fs from "fs/promises";
-import ServiceDeploymentConfig from "./ServiceDeploymentConfig";
+import InfraConfig from "./InfraConfig";
 
 export const defineDestroyScript = (program: Command) => {
   program.command('destroy')
@@ -15,7 +15,7 @@ export const defineDestroyScript = (program: Command) => {
       branch = exec('git rev-parse --abbrev-ref HEAD')
     }
     const configString = await fs.readFile(`./${options.config}`, 'utf-8')
-    const config = JSON.parse(configString) as ServiceDeploymentConfig;
+    const config = JSON.parse(configString) as InfraConfig;
     console.log(`Destroying with config: ${JSON.stringify(config)}`)
     if (options.troubleshoot){
       console.log('Where we are:')

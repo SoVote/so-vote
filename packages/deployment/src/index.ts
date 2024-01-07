@@ -6,8 +6,8 @@ import { defineDeployScript } from "./deploy";
 const program = new Command()
 
 program
-  .name('service-deployment')
-  .description('Provides environment deployment facilities')
+  .name('deployment')
+  .description('Provides deployment facilities')
 
 defineDeployScript(program)
 defineDeployScript(program)

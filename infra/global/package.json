@@ -14,6 +14,6 @@
     "@pulumi/aws": "^6.0.0",
     "@pulumi/awsx": "^2.0.2",
     "@pulumi/pulumi": "^3.0.0",
-    "@rainbow-husky/service-deployment": "workspace:^"
+    "@rainbow-husky/deployment": "workspace:^"
   }
 }

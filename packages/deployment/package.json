@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-husky/service-deployment",
+  "name": "@rainbow-husky/deployment",
   "private": true,
   "packageManager": "yarn@3.7.0",
   "scripts": {

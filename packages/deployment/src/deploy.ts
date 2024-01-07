@@ -1,11 +1,11 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
 import fs from "fs/promises";
-import ServiceDeploymentConfig from "./ServiceDeploymentConfig";
+import InfraConfig from "./InfraConfig";
 
 export const defineDeployScript = (program: Command) => {
   program.command('deploy')
-    .option('--config', 'The path to the config file', 'service.config.json')
+    .option('--config', 'The path to the config file', 'infra.config.json')
     .option('--troubleshoot', 'Runs the script in troubleshooting mode', false)
     .action(async (options) => {
       set('-e')
@@ -15,7 +15,7 @@ export const defineDeployScript = (program: Command) => {
         branch = exec('git rev-parse --abbrev-ref HEAD')
       }
       const configString = await fs.readFile(`./${options.config}`, 'utf-8')
-      const config = JSON.parse(configString) as ServiceDeploymentConfig;
+      const config = JSON.parse(configString) as InfraConfig;
       console.log(`Deploying with config: ${JSON.stringify(config)}`)
       if (options.troubleshoot){
         console.log('Where we are:')
@@ -25,7 +25,7 @@ export const defineDeployScript = (program: Command) => {
       }
       if (!branch) throw new Error('Current branch is not specified')
       if (branch !== 'main' && !process.env.PR_NUMBER) throw new Error('PR number is required to deploy non-prod envs')
-      const stack = branch === 'main' ? `prod-${config.name}-service` : `dev-${process.env.PR_NUMBER}-${config.name}-service`
+      const stack = branch === 'main' ? `prod-${config.name}` : `dev-${process.env.PR_NUMBER}-${config.name}`
       exec(`pulumi stack select ${stack} -c`)
       exec(`pulumi config set branch-name "${branch}"`)
       exec(`pulumi config set pr-number "${process.env.PR_NUMBER}"`)
