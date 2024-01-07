@@ -2765,7 +2765,7 @@ __metadata:
     "@pulumi/aws": ^6.0.0
     "@pulumi/awsx": ^2.0.2
     "@pulumi/pulumi": ^3.0.0
-    "@rainbow-husky/deployment": "workspace:^"
+    "@rainbow-husky/infra-scripts": "workspace:^"
     "@types/node": ^18
   languageName: unknown
   linkType: soft
@@ -2799,18 +2799,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rainbow-husky/deployment@workspace:^, @rainbow-husky/deployment@workspace:packages/deployment":
-  version: 0.0.0-use.local
-  resolution: "@rainbow-husky/deployment@workspace:packages/deployment"
-  dependencies:
-    "@types/shelljs": ^0.8.15
-    commander: ^11.1.0
-    shelljs: ^0.8.5
-  bin:
-    deploy-service: ./dist/index.js
-  languageName: unknown
-  linkType: soft
-
 "@rainbow-husky/email-templates@workspace:^, @rainbow-husky/email-templates@workspace:packages/email-templates":
   version: 0.0.0-use.local
   resolution: "@rainbow-husky/email-templates@workspace:packages/email-templates"
@@ -2829,8 +2817,20 @@ __metadata:
     "@pulumi/aws": ^6.0.0
     "@pulumi/awsx": ^2.0.2
     "@pulumi/pulumi": ^3.0.0
-    "@rainbow-husky/deployment": "workspace:^"
+    "@rainbow-husky/infra-scripts": "workspace:^"
     "@types/node": ^18
+  languageName: unknown
+  linkType: soft
+
+"@rainbow-husky/infra-scripts@workspace:^, @rainbow-husky/infra-scripts@workspace:packages/deployment":
+  version: 0.0.0-use.local
+  resolution: "@rainbow-husky/infra-scripts@workspace:packages/deployment"
+  dependencies:
+    "@types/shelljs": ^0.8.15
+    commander: ^11.1.0
+    shelljs: ^0.8.5
+  bin:
+    infra: ./dist/index.js
   languageName: unknown
   linkType: soft
 

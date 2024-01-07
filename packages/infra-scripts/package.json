@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-husky/deployment",
+  "name": "@rainbow-husky/infra-scripts",
   "private": true,
   "packageManager": "yarn@3.7.0",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "main": "dist/index.js",
   "bin": {
-    "deploy-service": "./dist/index.js"
+    "infra-scripts": "./dist/index.js"
   },
   "dependencies": {
     "commander": "^11.1.0",
