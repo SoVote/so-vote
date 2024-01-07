@@ -6,7 +6,6 @@ import {soVoteComZone} from "./soVoteCom";
 import {soVoteCoUkZone} from "./soVoteCoUk";
 import {soDashVoteComZone} from "./soDashVoteCom";
 import {soDashVoteCoUkZone} from "./soDashVoteCoUk";
-import { soVoteComDomainIdentity } from "../ses";
 
 export * from "./soVoteCom";
 export * from "./soVoteCoUk";
