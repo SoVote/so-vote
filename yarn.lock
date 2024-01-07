@@ -2822,21 +2822,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rainbow-husky/infra-scripts@workspace:^, @rainbow-husky/infra-scripts@workspace:packages/deployment":
+"@rainbow-husky/infra-scripts@workspace:^, @rainbow-husky/infra-scripts@workspace:packages/infra-scripts":
   version: 0.0.0-use.local
-  resolution: "@rainbow-husky/infra-scripts@workspace:packages/deployment"
+  resolution: "@rainbow-husky/infra-scripts@workspace:packages/infra-scripts"
   dependencies:
     "@types/shelljs": ^0.8.15
     commander: ^11.1.0
     shelljs: ^0.8.5
   bin:
-    infra: ./dist/index.js
+    infra-scripts: ./dist/index.js
   languageName: unknown
   linkType: soft
 
-"@rainbow-husky/shared-infrastructure@workspace:infra/shared":
+"@rainbow-husky/shared-infra@workspace:infra/shared":
   version: 0.0.0-use.local
-  resolution: "@rainbow-husky/shared-infrastructure@workspace:infra/shared"
+  resolution: "@rainbow-husky/shared-infra@workspace:infra/shared"
   dependencies:
     "@pulumi/aws": ^5.0.0
     "@pulumi/awsx": ^1.0.0

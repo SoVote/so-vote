@@ -1,6 +1,10 @@
 {
-    "name": "@rainbow-husky/shared-infrastructure",
+    "name": "@rainbow-husky/shared-infra",
     "main": "src/index.ts",
+    "scripts": {
+        "build": "",
+        "deploy": "infra-scripts deploy-shared"
+    },
     "devDependencies": {
         "@types/node": "^16"
     },

@@ -4,12 +4,12 @@ on:
   push:
     branches: ["main"]
     paths:
-      - '.github/workflows/boot_ci.yaml'
+      - '.github/workflows/bootUp.yaml'
       - 'infra/boot/**'
   pull_request:
     types: [opened, synchronize]
     paths:
-      - '.github/workflows/boot_ci.yaml'
+      - '.github/workflows/bootUp.yaml'
       - 'infra/boot/**'
 
 jobs:

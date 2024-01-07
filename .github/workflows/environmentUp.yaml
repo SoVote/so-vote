@@ -5,14 +5,12 @@ on:
     branches: ["main"]
     paths:
       - '**/*'
-      - '!infra/global/**'
-      - '!infra/boot/**'
+      - '!infra/*/**'
   pull_request:
     types: [opened, synchronize]
     paths:
       - '**/*'
-      - '!infra/global/**'
-      - '!infra/boot/**'
+      - '!infra/*/**'
 
 jobs:
   auth-service:
