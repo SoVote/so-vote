@@ -19,8 +19,9 @@ validateDomain('so-vote.co.uk', soDashVoteCoUkZone, soDashVoteCoUkCert)
 
 function validateDomain(domainName: string, zone: Zone, cert: Certificate){
   cert.domainValidationOptions.apply(domainValidationOptions => {
+    console.log(JSON.stringify(domainValidationOptions, null, 2))
     const wildcardDomainValidationOption = domainValidationOptions.find(option => option.domainName.startsWith('*'))
-    console.log(JSON.stringify(wildcardDomainValidationOption, null, 2))
+    if(!wildcardDomainValidationOption.resourceRecordType) return
     const certValidationRecord = new aws.route53.Record(`rainbow-husky-validation-record-${domainName}-${wildcardDomainValidationOption.domainName}`, {
       name: wildcardDomainValidationOption.resourceRecordName,
       type: wildcardDomainValidationOption.resourceRecordType,
