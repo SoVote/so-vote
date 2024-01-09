@@ -2841,6 +2841,7 @@ __metadata:
     "@pulumi/aws": ^5.0.0
     "@pulumi/awsx": ^1.0.0
     "@pulumi/pulumi": ^3.0.0
+    "@rainbow-husky/infra-scripts": "workspace:^"
     "@types/node": ^16
   languageName: unknown
   linkType: soft
