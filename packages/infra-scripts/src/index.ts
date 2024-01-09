@@ -3,6 +3,7 @@
 import { Command } from 'commander'
 import { defineDeployScript } from "./deploy";
 import { defineDestroyScript } from "./destroy";
+import { defineGlobalDeployScript } from "./deployGlobal";
 
 const program = new Command()
 
@@ -12,6 +13,7 @@ program
 
 
 defineDeployScript(program)
+defineGlobalDeployScript(program)
 defineDestroyScript(program)
 
 program.parse()
