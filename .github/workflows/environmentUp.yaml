@@ -67,6 +67,7 @@ jobs:
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}
+          yarn build --filter=@rainbow-husky/auth-service-code
           yarn deploy --filter=@rainbow-husky/auth-service-infra
           
 
