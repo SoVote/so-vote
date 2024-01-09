@@ -4,6 +4,7 @@ import { Command } from 'commander'
 import { defineDeployScript } from "./deploy";
 import { defineDestroyScript } from "./destroy";
 import { defineGlobalDeployScript } from "./deployGlobal";
+import { defineSharedDeployScript } from "./deployShared";
 
 const program = new Command()
 
@@ -13,6 +14,7 @@ program
 
 
 defineDeployScript(program)
+defineSharedDeployScript(program)
 defineGlobalDeployScript(program)
 defineDestroyScript(program)
 
