@@ -12,6 +12,10 @@ jobs:
     outputs:
       artifacts: ${{ steps.build.outputs.artifacts }}
 
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
