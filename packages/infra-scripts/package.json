@@ -7,7 +7,9 @@
     "try": "node ./dist/index.js deploy"
   },
   "main": "dist/index.js",
-  "bin": "./dist/index.js",
+  "bin": {
+    "infra-scripts": "./dist/index.js"
+  },
   "dependencies": {
     "commander": "^11.1.0",
     "shelljs": "^0.8.5"
