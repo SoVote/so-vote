@@ -1,4 +1,4 @@
-import { Logo } from '@rainbow-husky/common-components'
+import { Logo } from '@rainbow-husky/common-ui'
 
 export const MagicLinkEmail = ({ firstTime = false }: { firstTime?: boolean}) => {
   return (

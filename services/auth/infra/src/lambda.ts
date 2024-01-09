@@ -4,7 +4,7 @@ import {userApiLambdaRole} from "./iam";
 import { resourcePrefix, authApiSuffix } from "./variables";
 
 const authCode = new pulumi.asset.AssetArchive({
-  '.': new pulumi.asset.FileArchive('../../services/auth/dist'),
+  '.': new pulumi.asset.FileArchive('../code/dist'),
 })
 
 export const authApiLambda = new aws.lambda.Function(`${resourcePrefix}${authApiSuffix}`, {

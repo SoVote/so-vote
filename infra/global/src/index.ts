@@ -1,9 +1,6 @@
-import {repo} from "./github";
 import './ses'
 import { globalSoDashVoteComCert, globalSoDashVoteCoUkCert, globalSoVoteComCert, globalSoVoteCoUkCert } from "./acm";
 import { soDashVoteComZone, soDashVoteCoUkZone, soVoteComZone, soVoteCoUkZone } from "./route53";
-
-export const gitCloneUrl = repo.gitCloneUrl
 
 export const globalSoVoteComCertArn = globalSoVoteComCert.arn
 export const globalSoVoteCoUkCertArn = globalSoVoteCoUkCert.arn

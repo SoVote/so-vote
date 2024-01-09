@@ -5,7 +5,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/common-components/**/*.{js,ts,jsx,tsx,mdx}',
+    '../../packages/common-ui/**/*.{js,ts,jsx,tsx,mdx}',
     '../../packages/email-templates/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {

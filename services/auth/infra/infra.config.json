@@ -1,0 +1,9 @@
+{
+  "name": "auth-service",
+  "outputs": [
+    {
+      "pulumiOutputKey": "authApiLambdaName",
+      "githubOutputKey": "AUTH_SERVICE_API_FUNCTION_NAME"
+    }
+  ]
+}

@@ -2144,13 +2144,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/env@npm:14.0.4"
-  checksum: e8dac033d92c10e55d3b1802f8fd9be00383ed9d479add9fee0823a9a0bf2ab0f4421d5baea52921871c82daf5cd292421db8a1ed5d173e3cb088c3b3a984c0d
-  languageName: node
-  linkType: hard
-
 "@next/eslint-plugin-next@npm:14.0.0":
   version: 14.0.0
   resolution: "@next/eslint-plugin-next@npm:14.0.0"
@@ -2167,23 +2160,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-darwin-arm64@npm:14.0.4"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@next/swc-darwin-x64@npm:14.0.3":
   version: 14.0.3
   resolution: "@next/swc-darwin-x64@npm:14.0.3"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@next/swc-darwin-x64@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-darwin-x64@npm:14.0.4"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -2195,23 +2174,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-linux-arm64-gnu@npm:14.0.4"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
 "@next/swc-linux-arm64-musl@npm:14.0.3":
   version: 14.0.3
   resolution: "@next/swc-linux-arm64-musl@npm:14.0.3"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@next/swc-linux-arm64-musl@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-linux-arm64-musl@npm:14.0.4"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
@@ -2223,23 +2188,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-linux-x64-gnu@npm:14.0.4"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
 "@next/swc-linux-x64-musl@npm:14.0.3":
   version: 14.0.3
   resolution: "@next/swc-linux-x64-musl@npm:14.0.3"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@next/swc-linux-x64-musl@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-linux-x64-musl@npm:14.0.4"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
@@ -2251,13 +2202,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-win32-arm64-msvc@npm:14.0.4"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@next/swc-win32-ia32-msvc@npm:14.0.3":
   version: 14.0.3
   resolution: "@next/swc-win32-ia32-msvc@npm:14.0.3"
@@ -2265,23 +2209,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-win32-ia32-msvc@npm:14.0.4"
-  conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
 "@next/swc-win32-x64-msvc@npm:14.0.3":
   version: 14.0.3
   resolution: "@next/swc-win32-x64-msvc@npm:14.0.3"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@next/swc-win32-x64-msvc@npm:14.0.4":
-  version: 14.0.4
-  resolution: "@next/swc-win32-x64-msvc@npm:14.0.4"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -2629,7 +2559,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/aws@npm:^6.0.0, @pulumi/aws@npm:^6.9.0":
+"@pulumi/aws@npm:^5.0.0, @pulumi/aws@npm:^5.35.0":
+  version: 5.43.0
+  resolution: "@pulumi/aws@npm:5.43.0"
+  dependencies:
+    "@pulumi/pulumi": ^3.0.0
+    aws-sdk: ^2.0.0
+    builtin-modules: 3.0.0
+    mime: ^2.0.0
+    read-package-tree: ^5.2.1
+    resolve: ^1.7.1
+  checksum: 638bb25e32677590ef80a7340be55f6c20941c9f28595e6f3d325f52dd476731fa721592f9732bf67b1565665508871f3f7bf58626b85188aa93fe1a59a94981
+  languageName: node
+  linkType: hard
+
+"@pulumi/aws@npm:^6.0.0, @pulumi/aws@npm:^6.17.0, @pulumi/aws@npm:^6.9.0":
   version: 6.17.0
   resolution: "@pulumi/aws@npm:6.17.0"
   dependencies:
@@ -2642,7 +2586,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pulumi/awsx@npm:^2.0.2":
+"@pulumi/awsx@npm:^1.0.0":
+  version: 1.0.6
+  resolution: "@pulumi/awsx@npm:1.0.6"
+  dependencies:
+    "@pulumi/aws": ^5.35.0
+    "@pulumi/docker": ^3.6.1
+    "@pulumi/pulumi": ^3.0.0
+    "@types/aws-lambda": ^8.10.23
+    mime: ^2.0.0
+  checksum: 4cd03b4944ddc2a34b5fc523ce5ee1cf9ec49bee35ac9c2ff2a85626c230193e11dc0e279536ec8739ba898a6385f00958a58fe4f88a6f79550b5b4c2048ce33
+  languageName: node
+  linkType: hard
+
+"@pulumi/awsx@npm:^2.0.2, @pulumi/awsx@npm:^2.4.0":
   version: 2.4.0
   resolution: "@pulumi/awsx@npm:2.4.0"
   dependencies:
@@ -2655,6 +2612,16 @@ __metadata:
     docker-classic: "npm:@pulumi/docker@3.6.1"
     mime: ^2.0.0
   checksum: 71d26e98d885404d7d8220214179ae6d4704ef6680f6d056cd8ca03b005c1196b61ae2a77bf78f989ca2edb53f029b36bc2c5a95eba5f28dcbe36fde91d38382
+  languageName: node
+  linkType: hard
+
+"@pulumi/docker@npm:^3.6.1, docker-classic@npm:@pulumi/docker@3.6.1":
+  version: 3.6.1
+  resolution: "@pulumi/docker@npm:3.6.1"
+  dependencies:
+    "@pulumi/pulumi": ^3.0.0
+    semver: ^5.4.0
+  checksum: cf8302e65d43bfcc10da904e3f79c64fe397b8e3beca62b968693caeb3fbf4276619d67979da2eed644e47af9c04a8f54d8806006a51e893223eafc622a48a1f
   languageName: node
   linkType: hard
 
@@ -2699,6 +2666,40 @@ __metadata:
     typescript: ~3.8.3
     upath: ^1.1.0
   checksum: b899a4e4f642692302020c3a7016878e806043d8c3a4f00ad198ffba057d60841eefd192545cfa9687f630c5c77e8f5545a618da59bbde9012a66de84beca3f1
+  languageName: node
+  linkType: hard
+
+"@pulumi/pulumi@npm:^3.100.0":
+  version: 3.100.0
+  resolution: "@pulumi/pulumi@npm:3.100.0"
+  dependencies:
+    "@grpc/grpc-js": 1.9.6
+    "@logdna/tail-file": ^2.0.6
+    "@opentelemetry/api": ^1.2.0
+    "@opentelemetry/exporter-zipkin": ^1.6.0
+    "@opentelemetry/instrumentation": ^0.32.0
+    "@opentelemetry/instrumentation-grpc": ^0.32.0
+    "@opentelemetry/resources": ^1.6.0
+    "@opentelemetry/sdk-trace-base": ^1.6.0
+    "@opentelemetry/sdk-trace-node": ^1.6.0
+    "@opentelemetry/semantic-conventions": ^1.6.0
+    "@pulumi/query": ^0.3.0
+    "@types/google-protobuf": ^3.15.5
+    execa: ^5.1.0
+    google-protobuf: ^3.5.0
+    ini: ^2.0.0
+    js-yaml: ^3.14.0
+    minimist: ^1.2.6
+    normalize-package-data: ^3.0.0
+    pkg-dir: ^7.0.0
+    read-package-tree: ^5.3.1
+    require-from-string: ^2.0.1
+    semver: ^7.5.2
+    source-map-support: ^0.5.6
+    ts-node: ^7.0.1
+    typescript: ~3.8.3
+    upath: ^1.1.0
+  checksum: ccd3c378fe4491f9ebdf8a64395cbd0d303292a9215d47ca909a0173b966e85c2c73b7057d50b00a6caf03ad61a5e17aa2d5d38f6614df718f141d03d25b854c
   languageName: node
   linkType: hard
 
@@ -2764,18 +2765,37 @@ __metadata:
     "@pulumi/aws": ^6.0.0
     "@pulumi/awsx": ^2.0.2
     "@pulumi/pulumi": ^3.0.0
-    "@repo/service-deployment": "workspace:^"
+    "@rainbow-husky/infra-scripts": "workspace:^"
     "@types/node": ^18
   languageName: unknown
   linkType: soft
 
-"@rainbow-husky/common-components@workspace:^, @rainbow-husky/common-components@workspace:packages/common-components":
+"@rainbow-husky/bootstrap-infrastructure@workspace:infra/boot":
   version: 0.0.0-use.local
-  resolution: "@rainbow-husky/common-components@workspace:packages/common-components"
+  resolution: "@rainbow-husky/bootstrap-infrastructure@workspace:infra/boot"
   dependencies:
-    next: ^14.0.4
+    "@pulumi/aws": ^6.17.0
+    "@pulumi/awsx": ^2.4.0
+    "@pulumi/pulumi": ^3.100.0
+    "@types/eslint": ^8.56.0
+    eslint: ^8.56.0
+  languageName: unknown
+  linkType: soft
+
+"@rainbow-husky/common-ui@workspace:^, @rainbow-husky/common-ui@workspace:packages/common-ui":
+  version: 0.0.0-use.local
+  resolution: "@rainbow-husky/common-ui@workspace:packages/common-ui"
+  dependencies:
+    "@repo/eslint-config": "*"
+    "@repo/typescript-config": "*"
+    "@turbo/gen": ^1.10.12
+    "@types/eslint": ^8.44.7
+    "@types/node": ^20.5.2
+    "@types/react": ^18.2.0
+    "@types/react-dom": ^18.2.0
+    eslint: ^8.53.0
     react: ^18.2.0
-    react-dom: ^18.2.0
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -2783,10 +2803,45 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rainbow-husky/email-templates@workspace:packages/email-templates"
   dependencies:
-    "@rainbow-husky/common-components": "workspace:^"
+    "@rainbow-husky/common-ui": "workspace:^"
     "@react-email/components": 0.0.12
     react: ^18.2.0
     react-dom: ^18.2.0
+  languageName: unknown
+  linkType: soft
+
+"@rainbow-husky/global-infrastructure@workspace:infra/global":
+  version: 0.0.0-use.local
+  resolution: "@rainbow-husky/global-infrastructure@workspace:infra/global"
+  dependencies:
+    "@pulumi/aws": ^6.0.0
+    "@pulumi/awsx": ^2.0.2
+    "@pulumi/pulumi": ^3.0.0
+    "@rainbow-husky/infra-scripts": "workspace:^"
+    "@types/node": ^18
+  languageName: unknown
+  linkType: soft
+
+"@rainbow-husky/infra-scripts@workspace:^, @rainbow-husky/infra-scripts@workspace:packages/infra-scripts":
+  version: 0.0.0-use.local
+  resolution: "@rainbow-husky/infra-scripts@workspace:packages/infra-scripts"
+  dependencies:
+    "@types/shelljs": ^0.8.15
+    commander: ^11.1.0
+    shelljs: ^0.8.5
+  bin:
+    infra-scripts: ./dist/index.js
+  languageName: unknown
+  linkType: soft
+
+"@rainbow-husky/shared-infra@workspace:infra/shared":
+  version: 0.0.0-use.local
+  resolution: "@rainbow-husky/shared-infra@workspace:infra/shared"
+  dependencies:
+    "@pulumi/aws": ^5.0.0
+    "@pulumi/awsx": ^1.0.0
+    "@pulumi/pulumi": ^3.0.0
+    "@types/node": ^16
   languageName: unknown
   linkType: soft
 
@@ -2798,7 +2853,7 @@ __metadata:
     "@aws-sdk/client-sesv2": ^3.465.0
     "@headlessui/react": ^1.7.17
     "@heroicons/react": ^2.0.18
-    "@rainbow-husky/common-components": "workspace:^"
+    "@rainbow-husky/common-ui": "workspace:^"
     "@rainbow-husky/email-templates": "workspace:^"
     "@types/node": ^20
     "@types/react": ^18
@@ -2825,7 +2880,7 @@ __metadata:
   resolution: "@rainbow-husky/www-app-infra@workspace:apps/web/infra"
   dependencies:
     "@pulumi/pulumi": ^3.0.0
-    "@types/node": ^16
+    "@types/node": ^18
   languageName: unknown
   linkType: soft
 
@@ -3043,38 +3098,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/service-deployment@workspace:^, @repo/service-deployment@workspace:packages/service-deployment":
-  version: 0.0.0-use.local
-  resolution: "@repo/service-deployment@workspace:packages/service-deployment"
-  dependencies:
-    "@types/shelljs": ^0.8.15
-    commander: ^11.1.0
-    shelljs: ^0.8.5
-  bin:
-    deploy-service: ./dist/index.js
-  languageName: unknown
-  linkType: soft
-
 "@repo/typescript-config@*, @repo/typescript-config@workspace:packages/typescript-config":
   version: 0.0.0-use.local
   resolution: "@repo/typescript-config@workspace:packages/typescript-config"
-  languageName: unknown
-  linkType: soft
-
-"@repo/ui@workspace:packages/ui":
-  version: 0.0.0-use.local
-  resolution: "@repo/ui@workspace:packages/ui"
-  dependencies:
-    "@repo/eslint-config": "*"
-    "@repo/typescript-config": "*"
-    "@turbo/gen": ^1.10.12
-    "@types/eslint": ^8.44.7
-    "@types/node": ^20.5.2
-    "@types/react": ^18.2.0
-    "@types/react-dom": ^18.2.0
-    eslint: ^8.53.0
-    react: ^18.2.0
-    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3915,7 +3941,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^8.44.7":
+"@types/eslint@npm:^8.44.7, @types/eslint@npm:^8.56.0":
   version: 8.56.0
   resolution: "@types/eslint@npm:8.56.0"
   dependencies:
@@ -4883,7 +4909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1450.0":
+"aws-sdk@npm:^2.0.0, aws-sdk@npm:^2.1450.0":
   version: 2.1528.0
   resolution: "aws-sdk@npm:2.1528.0"
   dependencies:
@@ -5914,16 +5940,6 @@ __metadata:
   version: 1.1.3
   resolution: "dlv@npm:1.1.3"
   checksum: d7381bca22ed11933a1ccf376db7a94bee2c57aa61e490f680124fa2d1cd27e94eba641d9f45be57caab4f9a6579de0983466f620a2cd6230d7ec93312105ae7
-  languageName: node
-  linkType: hard
-
-"docker-classic@npm:@pulumi/docker@3.6.1":
-  version: 3.6.1
-  resolution: "@pulumi/docker@npm:3.6.1"
-  dependencies:
-    "@pulumi/pulumi": ^3.0.0
-    semver: ^5.4.0
-  checksum: cf8302e65d43bfcc10da904e3f79c64fe397b8e3beca62b968693caeb3fbf4276619d67979da2eed644e47af9c04a8f54d8806006a51e893223eafc622a48a1f
   languageName: node
   linkType: hard
 
@@ -7433,7 +7449,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.11, graceful-fs@npm:^4.2.2, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
+"graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.2, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: ac85f94da92d8eb6b7f5a8b20ce65e43d66761c55ce85ac96df6865308390da45a8d3f0296dd3a663de65d30ba497bd46c696cc1e248c72b13d6d567138a4fc7
@@ -9687,62 +9703,6 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: bf53e597b417ee7ebe148968672268dab0ee32eb358b2fc0899258e88ccae8e26cdc5c04a9e7a6c93e85a464e54eccd226db69d4c255c11e6c426a48320b0a64
-  languageName: node
-  linkType: hard
-
-"next@npm:^14.0.4":
-  version: 14.0.4
-  resolution: "next@npm:14.0.4"
-  dependencies:
-    "@next/env": 14.0.4
-    "@next/swc-darwin-arm64": 14.0.4
-    "@next/swc-darwin-x64": 14.0.4
-    "@next/swc-linux-arm64-gnu": 14.0.4
-    "@next/swc-linux-arm64-musl": 14.0.4
-    "@next/swc-linux-x64-gnu": 14.0.4
-    "@next/swc-linux-x64-musl": 14.0.4
-    "@next/swc-win32-arm64-msvc": 14.0.4
-    "@next/swc-win32-ia32-msvc": 14.0.4
-    "@next/swc-win32-x64-msvc": 14.0.4
-    "@swc/helpers": 0.5.2
-    busboy: 1.6.0
-    caniuse-lite: ^1.0.30001406
-    graceful-fs: ^4.2.11
-    postcss: 8.4.31
-    styled-jsx: 5.1.1
-    watchpack: 2.4.0
-  peerDependencies:
-    "@opentelemetry/api": ^1.1.0
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    sass: ^1.3.0
-  dependenciesMeta:
-    "@next/swc-darwin-arm64":
-      optional: true
-    "@next/swc-darwin-x64":
-      optional: true
-    "@next/swc-linux-arm64-gnu":
-      optional: true
-    "@next/swc-linux-arm64-musl":
-      optional: true
-    "@next/swc-linux-x64-gnu":
-      optional: true
-    "@next/swc-linux-x64-musl":
-      optional: true
-    "@next/swc-win32-arm64-msvc":
-      optional: true
-    "@next/swc-win32-ia32-msvc":
-      optional: true
-    "@next/swc-win32-x64-msvc":
-      optional: true
-  peerDependenciesMeta:
-    "@opentelemetry/api":
-      optional: true
-    sass:
-      optional: true
-  bin:
-    next: dist/bin/next
-  checksum: 879842979d3c7e2d2e2cd3edad3e715d408060a286bb12299089e08d7142af9effceee877e6d18aad359983119d025298ec5c63dd6317443027b47dc5167ac40
   languageName: node
   linkType: hard
 

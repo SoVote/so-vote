@@ -5,6 +5,4 @@ export const branchName = config.require('branch-name')
 
 export const isMain = branchName === 'main'
 
-export const prNumber = config.require('pr-number')
-
-export const envResourcePrefix = `rh-${isMain ? 'main' : `pr-${prNumber}`}`
+export const sharedResourcePrefix = `rh-shared-${isMain ? 'prod' : `dev`}`

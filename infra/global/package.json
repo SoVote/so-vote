@@ -1,12 +1,23 @@
 {
   "name": "@rainbow-husky/global-infrastructure",
   "main": "src/index.ts",
+  "scripts": {
+    "build": "",
+    "deploy": "infra-scripts deploy"
+  },
   "version": "0.1.0",
   "private": true,
   "packageManager": "yarn@3.4.1",
-  "scripts": {
-  },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6.0.0",
+    "@pulumi/awsx": "^2.0.2",
+    "@pulumi/pulumi": "^3.0.0",
+    "@rainbow-husky/infra-scripts": "workspace:^"
   }
 }
