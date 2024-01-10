@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-husky/global-infrastructure",
+  "name": "@rainbow-husky/global-infra",
   "main": "src/index.ts",
   "scripts": {
     "build": "",

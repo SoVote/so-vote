@@ -44,5 +44,5 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
         run: |
-          cd infra/environment
-          ./destroy.sh
+          export PULUMI_CONFIG_PASSPHRASE=
+          yarn destroy

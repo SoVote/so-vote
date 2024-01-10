@@ -16,6 +16,10 @@
     "deploy": {
       "dependsOn": ["^build"],
       "cache": false
+    },
+    "destroy": {
+      "dependsOn": ["^build"],
+      "cache": false
     }
   }
 }
