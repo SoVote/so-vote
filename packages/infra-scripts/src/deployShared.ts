@@ -14,10 +14,8 @@ export const defineSharedDeployScript = (program: Command) => {
       if (process.env.CI !== 'true') {
         branch = exec('git rev-parse --abbrev-ref HEAD')
       }
-      if(branch !== 'main'){
-        throw new Error(`Shared infrastructure can only be deployed from main branch but current is "${branch}"`)
-      }
-      console.log(`Deploying shared infrastructure`)
+      const isMain = branch !== 'main'
+      console.log(`${isMain ? 'Deploying' : 'Previewing'} shared infrastructure`)
       if (options.troubleshoot){
         console.log('Where we are:')
         exec('pwd')
@@ -25,7 +23,11 @@ export const defineSharedDeployScript = (program: Command) => {
       const stack = branch === 'main' ? `prod-shared` : `dev-shared`
       exec(`pulumi stack select ${stack} -c`)
       exec(`pulumi config set branch-name "${branch}"`)
-      exec('pulumi up --yes')
+      if(isMain){
+        exec('pulumi up --yes')
+      } else {
+        exec('pulumi preview')
+      }
       pulumiOutputsToGitHubAction()
       console.log('Done')
     })
