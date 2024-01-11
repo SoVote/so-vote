@@ -2810,9 +2810,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rainbow-husky/global-infrastructure@workspace:infra/global":
+"@rainbow-husky/global-infra@workspace:infra/global":
   version: 0.0.0-use.local
-  resolution: "@rainbow-husky/global-infrastructure@workspace:infra/global"
+  resolution: "@rainbow-husky/global-infra@workspace:infra/global"
   dependencies:
     "@pulumi/aws": ^6.0.0
     "@pulumi/awsx": ^2.0.2
