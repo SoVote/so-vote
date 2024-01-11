@@ -28,7 +28,7 @@ export const defineDestroyScript = (program: Command) => {
     }
     if (!branch) throw new Error('Current branch is not specified')
     if (branch !== 'main' && !prNumber) throw new Error('PR number is required to destroy non-prod envs')
-    const stack = branch === 'main' ? `prod-${serviceName}-service` : `dev-${prNumber}-${serviceName}-service`
+    const stack = branch === 'main' ? `prod-${serviceName}` : `dev-${prNumber}-${serviceName}`
     exec(`pulumi stack select ${stack} -c`)
     exec(`pulumi config set branch-name "${branch}"`)
     exec(`pulumi config set pr-number "${prNumber}"`)
