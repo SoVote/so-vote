@@ -3,8 +3,8 @@
     "main": "src/index.ts",
     "scripts": {
         "build": "",
-        "deploy": "PR_NUMBER=2 infra-scripts deploy",
-        "destroy": "PR_NUMBER=2 infra-scripts destroy"
+        "deploy": "infra-scripts deploy",
+        "destroy": "infra-scripts destroy"
     },
     "devDependencies": {
         "@types/node": "^18"
