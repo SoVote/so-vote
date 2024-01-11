@@ -39,6 +39,10 @@ jobs:
       - name: Pulumi
         uses: pulumi/actions@v4
 
+      - name: Set up Pulumi
+        run: |
+          pulumi login s3://rainbow-husky-pulumi-state
+
       - name: Destroy
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
