@@ -40,12 +40,9 @@ jobs:
         with:
           node-version: 18
           cache: 'yarn'
-#
-#      - name: Show folder structure
-#        run: find . -not -path '*node_modules*'
 
       - name: Install dependencies
-        run: yarn
+        run: yarn workspaces focus @rainbow-husky/shared-infra
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -67,7 +64,3 @@ jobs:
           export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}
           yarn deploy --filter=@rainbow-husky/shared-infra
-          
-
-    #      - name: Test
-    #        run: yarn test
