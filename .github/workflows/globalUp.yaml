@@ -26,6 +26,14 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Cache turbo build setup
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -33,7 +41,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn workspaces focus @rainbow-husky/bootstrap-infrastructure
+        run: yarn install --immutable
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -52,7 +60,5 @@ jobs:
       - name: Deploy
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
-          cd infra/global
-          
-          pulumi stack select global -c
-          pulumi up --yes
+          export PR_NUMBER=${{ github.event.pull_request.number }}
+          yarn deploy --filter=@rainbow-husky/global-infra

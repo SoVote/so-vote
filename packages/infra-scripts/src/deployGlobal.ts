@@ -1,8 +1,7 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
-import fs from "fs/promises";
-import InfraConfig from "./InfraConfig";
 import { pulumiOutputsToGitHubAction } from "./pulumiOutputsToGitHubAction";
+import { getServiceName } from "./getServiceName";
 
 export const defineGlobalDeployScript = (program: Command) => {
   program.command('deploy-global')
@@ -15,19 +14,19 @@ export const defineGlobalDeployScript = (program: Command) => {
       if (process.env.CI !== 'true') {
         branch = exec('git rev-parse --abbrev-ref HEAD')
       }
-      if(branch !== 'main'){
-        throw new Error(`Global infrastructure can only be deployed from main branch but current is "${branch}"`)
-      }
-      const configString = await fs.readFile(`./${options.config}`, 'utf-8')
-      const config = JSON.parse(configString) as InfraConfig;
-      console.log(`Deploying with config: ${JSON.stringify(config)}`)
+      const isMain = branch !== 'main'
+      console.log(`${isMain ? 'Deploying' : 'Previewing'} global infrastructure`)
       if (options.troubleshoot){
         console.log('Where we are:')
         exec('pwd')
       }
-      exec(`pulumi stack select ${config.name} -c`)
-      exec('pulumi up --yes')
-      pulumiOutputsToGitHubAction(config)
+      exec(`pulumi stack select global -c`)
+      if(isMain){
+        exec('pulumi up --yes')
+      } else {
+        exec('pulumi preview')
+      }
+      pulumiOutputsToGitHubAction()
       console.log('Done')
     })
 }

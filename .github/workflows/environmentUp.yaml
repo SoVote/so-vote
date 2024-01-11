@@ -46,7 +46,7 @@ jobs:
 #        run: find . -not -path '*node_modules*'
 
       - name: Install dependencies
-        run: yarn
+        run: yarn install --immutable
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -68,7 +68,6 @@ jobs:
           export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}
           yarn build --filter=@rainbow-husky/auth-service-code
-          yarn build --filter=@rainbow-husky/auth-service-infra
           yarn deploy --filter=@rainbow-husky/auth-service-infra
           
 
