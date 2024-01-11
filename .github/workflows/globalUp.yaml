@@ -52,7 +52,5 @@ jobs:
       - name: Deploy
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
-          cd infra/global
-          
-          pulumi stack select global -c
-          pulumi up --yes
+          export PR_NUMBER=${{ github.event.pull_request.number }}
+          yarn deploy --filter=@rainbow-husky/global-infra
