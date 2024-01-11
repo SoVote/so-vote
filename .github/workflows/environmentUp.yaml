@@ -46,7 +46,7 @@ jobs:
 #        run: find . -not -path '*node_modules*'
 
       - name: Install dependencies
-        run: yarn
+        run: yarn install --immutable
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
