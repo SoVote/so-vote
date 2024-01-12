@@ -31,7 +31,7 @@ export const webServerLambda = new aws.lambda.Function(`${resourcePrefix}-server
   memorySize: 1024,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
-    '.': new pulumi.asset.FileArchive('../../apps/web/.open-next/server-function'),
+    '.': new pulumi.asset.FileArchive('../code/.open-next/server-function'),
   }),
   environment: {
     variables: {
@@ -59,7 +59,7 @@ export const webImageOptimizationLambda = new aws.lambda.Function(`${resourcePre
   memorySize: 1024,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
-    '.': new pulumi.asset.FileArchive('../../apps/web/.open-next/image-optimization-function'),
+    '.': new pulumi.asset.FileArchive('../code/.open-next/image-optimization-function'),
   }),
   environment: {
     variables: {
@@ -83,7 +83,7 @@ export const webCacheRevalidationLambda = new aws.lambda.Function(`${resourcePre
   memorySize: 512,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
-    '.': new pulumi.asset.FileArchive('../../apps/web/.open-next/revalidation-function'),
+    '.': new pulumi.asset.FileArchive('../code/.open-next/revalidation-function'),
   }),
 });
 export const webCacheRevalidationLambdaMapping = new aws.lambda.EventSourceMapping(`${resourcePrefix}-cache-revalidation-mapping`, {
@@ -102,7 +102,7 @@ export const webWarmerLambda = new aws.lambda.Function(`${resourcePrefix}-lambda
   memorySize: 512,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
-    '.': new pulumi.asset.FileArchive('../../apps/web/.open-next/warmer-function'),
+    '.': new pulumi.asset.FileArchive('../code/.open-next/warmer-function'),
   }),
   environment: {
     variables: {
