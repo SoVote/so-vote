@@ -2880,7 +2880,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rainbow-husky/www-app-infra@workspace:apps/web/infra"
   dependencies:
+    "@pulumi/aws": ^6.0.0
+    "@pulumi/awsx": ^2.0.2
     "@pulumi/pulumi": ^3.0.0
+    "@rainbow-husky/infra-scripts": "workspace:^"
     "@types/node": ^18
   languageName: unknown
   linkType: soft
