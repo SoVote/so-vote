@@ -23,8 +23,8 @@ export const defineDeployScript = (program: Command) => {
       if (options.troubleshoot){
         console.log('Where we are:')
         exec('pwd')
-        console.log('Code directory contains:')
-        exec('find ../code')
+        // console.log('Code directory contains:')
+        // exec('find ../code')
         console.log('Pulumi stacks:')
         exec('pulumi stack ls')
       }
