@@ -3,7 +3,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "",
-    "deploy": "infra-scripts deploy",
+    "deploy": "infra-scripts deploy --troubleshoot",
     "destroy": "infra-scripts destroy"
   },
   "devDependencies": {
