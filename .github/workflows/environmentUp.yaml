@@ -127,6 +127,7 @@ jobs:
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}
+          yarn build --filter=@rainbow-husky/web-app-code
           yarn deploy --filter=@rainbow-husky/www-app-infra
 
 #      - name: Test
