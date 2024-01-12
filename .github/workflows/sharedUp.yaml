@@ -60,6 +60,8 @@ jobs:
 
       - name: Release
         id: release
+        env:
+          PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}

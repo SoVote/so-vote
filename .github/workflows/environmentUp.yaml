@@ -124,6 +124,7 @@ jobs:
       - name: Release
         env:
           WWW_ARTIFACTS: ${{needs.auth-service.outputs.auth-service-function-name}}
+          PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
         run: |
           export PULUMI_CONFIG_PASSPHRASE=
           export PR_NUMBER=${{ github.event.pull_request.number }}
