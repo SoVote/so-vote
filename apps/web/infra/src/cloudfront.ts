@@ -1,21 +1,21 @@
 import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
 import * as cloudfront from '@pulumi/aws/cloudfront';
-import * as inputs from "@pulumi/aws/types/input";
+import * as inputs from '@pulumi/aws/types/input';
 import {
   webHostTransformViewerRequestCfFunction,
   webImageOptimisationLambdaUrl,
   webServerLambdaUrl
-} from "./lambda";
-import { webAssetsBucket } from "./s3";
-import { isMain, prNumber, resourcePrefix } from "./variables";
-import { bootStack } from "./stacks";
+} from './lambda';
+import { webAssetsBucket } from './s3';
+import { isMain, prNumber, resourcePrefix } from './variables';
+import { globalStack } from './stacks';
 
 const webStaticAssetsOac = new aws.cloudfront.OriginAccessControl(`${resourcePrefix}-static-assets`, {
-  description: "Web Static Assets S3 Origin Access Control",
-  originAccessControlOriginType: "s3",
-  signingBehavior: "always",
-  signingProtocol: "sigv4",
+  description: 'Web Static Assets S3 Origin Access Control',
+  originAccessControlOriginType: 's3',
+  signingBehavior: 'always',
+  signingProtocol: 'sigv4',
 });
 const webStaticAssetsOrigin: inputs.cloudfront.DistributionOrigin = {
   originId: 'static-assets',
@@ -51,19 +51,19 @@ const webServerCachePolicy = new aws.cloudfront.CachePolicy(`${resourcePrefix}-s
   defaultTtl: 0,
   parametersInCacheKeyAndForwardedToOrigin: {
     cookiesConfig: {
-      cookieBehavior: "all",
+      cookieBehavior: 'all',
     },
     enableAcceptEncodingBrotli: true,
     enableAcceptEncodingGzip: true,
     headersConfig: {
-      headerBehavior: "whitelist",
+      headerBehavior: 'whitelist',
       headers: {
         items: [
-          "accept",
-          "rsc",
-          "next-router-prefetch",
-          "next-router-state-tree",
-          "next-url",
+          'accept',
+          'rsc',
+          'next-router-prefetch',
+          'next-router-state-tree',
+          'next-url',
           'x-op-middleware-response-headers',
           'x-middleware-prefetch',
           'x-op-middleware-request-headers',
@@ -72,7 +72,7 @@ const webServerCachePolicy = new aws.cloudfront.CachePolicy(`${resourcePrefix}-s
       },
     },
     queryStringsConfig: {
-      queryStringBehavior: "all",
+      queryStringBehavior: 'all',
     },
   },
 });
@@ -81,42 +81,42 @@ const webStaticCachePolicy = new aws.cloudfront.CachePolicy(`${resourcePrefix}-s
   defaultTtl: 0,
   parametersInCacheKeyAndForwardedToOrigin: {
     cookiesConfig: {
-      cookieBehavior: "none",
+      cookieBehavior: 'none',
     },
     enableAcceptEncodingBrotli: true,
     enableAcceptEncodingGzip: true,
     headersConfig: {
-      headerBehavior: "whitelist",
+      headerBehavior: 'whitelist',
       headers: {
         items: [
-          "accept",
-          "rsc",
-          "next-router-prefetch",
-          "next-router-state-tree",
-          "next-url",
+          'accept',
+          'rsc',
+          'next-router-prefetch',
+          'next-router-state-tree',
+          'next-url',
         ],
       },
     },
     queryStringsConfig: {
-      queryStringBehavior: "all",
+      queryStringBehavior: 'all',
     },
   },
 });
 
 
 const webOriginRequestPolicy = new aws.cloudfront.OriginRequestPolicy(`${resourcePrefix}-origin-request-policy`, {
-  comment: "Policy to forward all parameters in viewer requests except for the Host header",
+  comment: 'Policy to forward all parameters in viewer requests except for the Host header',
   cookiesConfig: {
-    cookieBehavior: "all",
+    cookieBehavior: 'all',
   },
   headersConfig: {
-    headerBehavior: "allExcept",
+    headerBehavior: 'allExcept',
     headers: {
-      items: ["host"],
+      items: ['host'],
     },
   },
   queryStringsConfig: {
-    queryStringBehavior: "all",
+    queryStringBehavior: 'all',
   },
 });
 
@@ -131,7 +131,7 @@ export const webDistribution = new cloudfront.Distribution(`${resourcePrefix}-cd
     imageOptimisationLambdaOrigin
   ],
   viewerCertificate: {
-    acmCertificateArn: bootStack.requireOutput('globalSoVoteComCertArn'),
+    acmCertificateArn: globalStack.requireOutput('GLOBAL_SO_VOTE_COM_CERT_ARN'),
     sslSupportMethod: 'sni-only'
   },
   restrictions: {
@@ -199,8 +199,8 @@ export const webDistribution = new cloudfront.Distribution(`${resourcePrefix}-cd
     },
     {
       targetOriginId: webStaticAssetsOrigin.originId,
-      viewerProtocolPolicy: "https-only",
-      pathPattern: "favicon.ico",
+      viewerProtocolPolicy: 'https-only',
+      pathPattern: 'favicon.ico',
       allowedMethods: ['GET', 'HEAD', 'OPTIONS'],
       cachedMethods: ['HEAD', 'GET', 'OPTIONS'],
       compress: true,
