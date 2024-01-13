@@ -1,0 +1,3 @@
+name: web-app-infra
+runtime: nodejs
+description: Infrastructure supporting the web app

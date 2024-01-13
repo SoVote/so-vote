@@ -23,8 +23,10 @@ export const defineDeployScript = (program: Command) => {
       if (options.troubleshoot){
         console.log('Where we are:')
         exec('pwd')
-        console.log('Code directory contains:')
-        exec('find ../code')
+        // console.log('Code directory contains:')
+        // exec('find ../code')
+        console.log('Pulumi stacks:')
+        exec('pulumi stack ls')
       }
       if (!branch) throw new Error('Current branch is not specified')
       if (branch !== 'main' && !prNumber) throw new Error('PR number is required to deploy non-prod envs')
