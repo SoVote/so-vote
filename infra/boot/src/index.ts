@@ -1,3 +1,3 @@
 import { ghActionsRole } from './iam'
 
-export const ghActionsRoleArn = ghActionsRole.arn
+export const GH_ACTIONS_ROLE_ARN = ghActionsRole.arn
