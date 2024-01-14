@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { exec, set } from "shelljs";
 import { pulumiOutputsToGitHubAction } from "./pulumiOutputsToGitHubAction";
 import { getServiceName } from "./getServiceName";
+import { logTroubleshootingInfo } from "./logTroubleshootingInfo";
 
 export const defineDeployScript = (program: Command) => {
   program.command('deploy')
@@ -9,7 +10,7 @@ export const defineDeployScript = (program: Command) => {
     .option('--troubleshoot', 'Runs the script in troubleshooting mode', false)
     .action(async (options) => {
       set('-e')
-      if (options.troubleshoot) exec('export')
+      if (options.troubleshoot) logTroubleshootingInfo()
       let branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME
       let prNumber = process.env.PR_NUMBER
       const serviceName = await getServiceName()
@@ -20,14 +21,6 @@ export const defineDeployScript = (program: Command) => {
         //TODO: Find PR number by querying the GitHub API
       }
       console.log(`Deploying ${serviceName}`)
-      if (options.troubleshoot){
-        console.log('Where we are:')
-        exec('pwd')
-        // console.log('Code directory contains:')
-        // exec('find ../code')
-        console.log('Pulumi stacks:')
-        exec('pulumi stack ls -a')
-      }
       if (!branch) throw new Error('Current branch is not specified')
       if (branch !== 'main' && !prNumber) throw new Error('PR number is required to deploy non-prod envs')
       const stack = branch === 'main' ? `prod-${serviceName}` : `dev-${prNumber}-${serviceName}`
