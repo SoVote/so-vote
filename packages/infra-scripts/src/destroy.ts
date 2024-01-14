@@ -1,8 +1,7 @@
 import { Command } from "commander";
-import { echo, exec, set } from "shelljs";
-import fs from "fs/promises";
-import { getServiceName } from "./getServiceName";
-import { logTroubleshootingInfo } from "./logTroubleshootingInfo";
+import { exec, set } from "shelljs";
+import { getServiceName } from "./utils/getServiceName";
+import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
 
 export const defineDestroyScript = (program: Command) => {
   program.command('destroy')

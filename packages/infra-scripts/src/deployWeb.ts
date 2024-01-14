@@ -6,7 +6,6 @@ import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
 import { getBranch } from "./utils/getBranch";
 import { getPrNumber } from "./utils/getPrNumber";
 import { getPulumiOutputs } from "./utils/getPulumiOutputs";
-import { WEB_CLOUDFRONT_ID } from "@rainbow-husky/www-app-infra";
 
 export const defineDeployWebScript = (program: Command) => {
   program.command('deploy-web')
