@@ -1,7 +1,9 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
-import { pulumiOutputsToGitHubAction } from "./pulumiOutputsToGitHubAction";
-import { getServiceName } from "./getServiceName";
+import { pulumiOutputsToGitHubAction } from "./utils/pulumiOutputsToGitHubAction";
+import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
+import { getBranch } from "./utils/getBranch";
+import { getPulumiOutputs } from "./utils/getPulumiOutputs";
 
 export const defineSharedDeployScript = (program: Command) => {
   program.command('deploy-shared')
@@ -9,17 +11,10 @@ export const defineSharedDeployScript = (program: Command) => {
     .option('--troubleshoot', 'Runs the script in troubleshooting mode', false)
     .action(async (options) => {
       set('-e')
-      if (options.troubleshoot) exec('export')
-      let branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME
-      if (process.env.CI !== 'true') {
-        branch = exec('git rev-parse --abbrev-ref HEAD')
-      }
+      if (options.troubleshoot) logTroubleshootingInfo()
+      const branch = getBranch()
       const isMain = branch !== 'main'
       console.log(`${isMain ? 'Deploying' : 'Previewing'} shared infrastructure`)
-      if (options.troubleshoot){
-        console.log('Where we are:')
-        exec('pwd')
-      }
       const stack = branch === 'main' ? `prod-shared` : `dev-shared`
       exec(`pulumi stack select ${stack} -c`)
       exec(`pulumi config set branch-name "${branch}"`)
@@ -28,7 +23,7 @@ export const defineSharedDeployScript = (program: Command) => {
       } else {
         exec('pulumi preview')
       }
-      pulumiOutputsToGitHubAction()
+      pulumiOutputsToGitHubAction(getPulumiOutputs())
       console.log('Done')
     })
 }

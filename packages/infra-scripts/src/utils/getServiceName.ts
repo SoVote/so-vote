@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import { PackageJson } from "./PackageJson";
+import { PackageJson } from "../PackageJson";
 
 export const getServiceName = async () => {
   const configString = await fs.readFile(`./package.json`, 'utf-8')

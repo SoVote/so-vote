@@ -1,7 +1,7 @@
 import { Command } from "commander";
-import { echo, exec, set } from "shelljs";
-import fs from "fs/promises";
-import { getServiceName } from "./getServiceName";
+import { exec, set } from "shelljs";
+import { getServiceName } from "./utils/getServiceName";
+import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
 
 export const defineDestroyScript = (program: Command) => {
   program.command('destroy')
@@ -9,7 +9,7 @@ export const defineDestroyScript = (program: Command) => {
   .option('--troubleshoot', 'Runs the script in troubleshooting mode', false)
   .action(async (options) => {
     set('-e')
-    if (options.troubleshoot) exec('export')
+    if (options.troubleshoot) logTroubleshootingInfo()
     let branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME
     let prNumber = process.env.PR_NUMBER
     if (process.env.CI !== 'true') {
@@ -20,12 +20,6 @@ export const defineDestroyScript = (program: Command) => {
     }
     const serviceName = await getServiceName()
     console.log(`Destroying ${serviceName}`)
-    if (options.troubleshoot){
-      console.log('Where we are:')
-      exec('pwd')
-      console.log('Code directory contains:')
-      exec('find ../code')
-    }
     if (!branch) throw new Error('Current branch is not specified')
     if (branch !== 'main' && !prNumber) throw new Error('PR number is required to destroy non-prod envs')
     const stack = branch === 'main' ? `prod-${serviceName}` : `dev-${prNumber}-${serviceName}`
