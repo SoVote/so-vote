@@ -1,8 +1,9 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
-import { pulumiOutputsToGitHubAction } from "./pulumiOutputsToGitHubAction";
+import { pulumiOutputsToGitHubAction } from "./utils/pulumiOutputsToGitHubAction";
 import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
 import { getBranch } from "./utils/getBranch";
+import { getPulumiOutputs } from "./utils/getPulumiOutputs";
 
 export const defineGlobalDeployScript = (program: Command) => {
   program.command('deploy-global')
@@ -20,7 +21,7 @@ export const defineGlobalDeployScript = (program: Command) => {
       } else {
         exec('pulumi preview')
       }
-      pulumiOutputsToGitHubAction()
+      pulumiOutputsToGitHubAction(getPulumiOutputs())
       console.log('Done')
     })
 }

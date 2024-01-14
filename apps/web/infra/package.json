@@ -3,7 +3,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "",
-    "deploy": "PR_NUMBER=6 infra-scripts deploy",
+    "deploy": "infra-scripts deploy-web",
     "destroy": "infra-scripts destroy"
   },
   "devDependencies": {

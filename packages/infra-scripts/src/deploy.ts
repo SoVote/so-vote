@@ -1,10 +1,11 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
-import { pulumiOutputsToGitHubAction } from "./pulumiOutputsToGitHubAction";
+import { pulumiOutputsToGitHubAction } from "./utils/pulumiOutputsToGitHubAction";
 import { getServiceName } from "./utils/getServiceName";
 import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
 import { getBranch } from "./utils/getBranch";
 import { getPrNumber } from "./utils/getPrNumber";
+import { getPulumiOutputs } from "./utils/getPulumiOutputs";
 
 export const defineDeployScript = (program: Command) => {
   program.command('deploy')
@@ -24,7 +25,7 @@ export const defineDeployScript = (program: Command) => {
       exec(`pulumi config set branch-name "${branch}"`)
       exec(`pulumi config set pr-number "${prNumber}"`)
       exec('pulumi up --yes')
-      pulumiOutputsToGitHubAction()
+      pulumiOutputsToGitHubAction(getPulumiOutputs())
       console.log('Done')
     })
 }

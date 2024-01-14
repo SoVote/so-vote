@@ -1,13 +1,15 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
 import { getServiceName } from "./utils/getServiceName";
-import { pulumiOutputsToGitHubAction } from "./pulumiOutputsToGitHubAction";
+import { pulumiOutputsToGitHubAction } from "./utils/pulumiOutputsToGitHubAction";
 import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
 import { getBranch } from "./utils/getBranch";
 import { getPrNumber } from "./utils/getPrNumber";
+import { getPulumiOutputs } from "./utils/getPulumiOutputs";
+import { WEB_CLOUDFRONT_ID } from "@rainbow-husky/www-app-infra";
 
 export const defineDeployWebScript = (program: Command) => {
-  program.command('deploy')
+  program.command('deploy-web')
   .option('--config', 'The path to the config file', 'infra.config.json')
   .option('--troubleshoot', 'Runs the script in troubleshooting mode', false)
   .action(async (options) => {
@@ -24,7 +26,37 @@ export const defineDeployWebScript = (program: Command) => {
     exec(`pulumi config set branch-name "${branch}"`)
     exec(`pulumi config set pr-number "${prNumber}"`)
     exec('pulumi up --yes')
-    pulumiOutputsToGitHubAction()
+
+    const plOutputs = getPulumiOutputs()
+
+    // Assets
+    console.log(`Clearing assets from Web S3 asset bucket ${plOutputs.WEB_ASSETS_BUCKET}`)
+    exec(`aws s3 rm "s3://${plOutputs.WEB_ASSETS_BUCKET}/" --recursive`)
+
+    console.log(`Uploading static assets to Web S3 asset bucket ${plOutputs.WEB_ASSETS_BUCKET}`)
+    exec(`aws s3 cp "../../apps/www/.open-next/assets" "s3://${plOutputs.WEB_ASSETS_BUCKET}" --recursive`)
+
+    // Cache
+    console.log(`Clearing cached files from Web S3 cache bucket ${plOutputs.WEB_CACHE_BUCKET}`)
+    exec(`aws s3 rm "s3://${plOutputs.WEB_CACHE_BUCKET}/" --recursive`)
+
+    console.log(`Uploading cached files to Web S3 cache bucket ${plOutputs.WEB_CACHE_BUCKET}`)
+    exec(`aws s3 cp "../../apps/www/.open-next/cache" "s3://${plOutputs.WEB_CACHE_BUCKET}" --recursive`)
+
+    // Public images
+    console.log(`Clearing cached files from Web S3 cache bucket ${plOutputs.WEB_IMAGE_BUCKET}`)
+    exec(`aws s3 rm "s3://${plOutputs.WEB_IMAGE_BUCKET}/" --recursive`)
+
+    console.log(`Uploading public files to Web S3 images bucket ${plOutputs.WEB_IMAGE_BUCKET}`)
+    exec(`aws s3 cp "../../apps/www/public/images" "s3://${plOutputs.WEB_IMAGE_BUCKET}/images" --recursive`)
+
+    // Invalidate Cache
+    console.log(`Invalidating CF (${plOutputs.WEB_CLOUDFRONT_ID}) cache...`)
+    exec(`aws cloudfront create-invalidation --distribution-id "${plOutputs.WEB_CLOUDFRONT_ID}" --paths "/*"`)
+
+
+    pulumiOutputsToGitHubAction(getPulumiOutputs())
+
     console.log('Done')
   })
 }
