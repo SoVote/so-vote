@@ -1,8 +1,10 @@
 import { Command } from "commander";
 import { exec, set } from "shelljs";
 import { pulumiOutputsToGitHubAction } from "./pulumiOutputsToGitHubAction";
-import { getServiceName } from "./getServiceName";
-import { logTroubleshootingInfo } from "./logTroubleshootingInfo";
+import { getServiceName } from "./utils/getServiceName";
+import { logTroubleshootingInfo } from "./utils/logTroubleshootingInfo";
+import { getBranch } from "./utils/getBranch";
+import { getPrNumber } from "./utils/getPrNumber";
 
 export const defineDeployScript = (program: Command) => {
   program.command('deploy')
@@ -11,15 +13,9 @@ export const defineDeployScript = (program: Command) => {
     .action(async (options) => {
       set('-e')
       if (options.troubleshoot) logTroubleshootingInfo()
-      let branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME
-      let prNumber = process.env.PR_NUMBER
+      const branch = getBranch()
+      const prNumber = getPrNumber()
       const serviceName = await getServiceName()
-      if (process.env.CI !== 'true') {
-        branch = exec('git rev-parse --abbrev-ref HEAD')
-
-        if(!prNumber) throw new Error('Missing required PR_NUMBER env var when running locally')
-        //TODO: Find PR number by querying the GitHub API
-      }
       console.log(`Deploying ${serviceName}`)
       if (!branch) throw new Error('Current branch is not specified')
       if (branch !== 'main' && !prNumber) throw new Error('PR number is required to deploy non-prod envs')
