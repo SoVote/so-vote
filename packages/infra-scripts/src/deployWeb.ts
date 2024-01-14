@@ -33,21 +33,21 @@ export const defineDeployWebScript = (program: Command) => {
     exec(`aws s3 rm "s3://${plOutputs.WEB_ASSETS_BUCKET}/" --recursive`)
 
     console.log(`Uploading static assets to Web S3 asset bucket ${plOutputs.WEB_ASSETS_BUCKET}`)
-    exec(`aws s3 cp "../../apps/www/.open-next/assets" "s3://${plOutputs.WEB_ASSETS_BUCKET}" --recursive`)
+    exec(`aws s3 cp "../code/.open-next/assets" "s3://${plOutputs.WEB_ASSETS_BUCKET}" --recursive`)
 
     // Cache
     console.log(`Clearing cached files from Web S3 cache bucket ${plOutputs.WEB_CACHE_BUCKET}`)
     exec(`aws s3 rm "s3://${plOutputs.WEB_CACHE_BUCKET}/" --recursive`)
 
     console.log(`Uploading cached files to Web S3 cache bucket ${plOutputs.WEB_CACHE_BUCKET}`)
-    exec(`aws s3 cp "../../apps/www/.open-next/cache" "s3://${plOutputs.WEB_CACHE_BUCKET}" --recursive`)
+    exec(`aws s3 cp "../code/.open-next/cache" "s3://${plOutputs.WEB_CACHE_BUCKET}" --recursive`)
 
     // Public images
     console.log(`Clearing cached files from Web S3 cache bucket ${plOutputs.WEB_IMAGE_BUCKET}`)
     exec(`aws s3 rm "s3://${plOutputs.WEB_IMAGE_BUCKET}/" --recursive`)
 
     console.log(`Uploading public files to Web S3 images bucket ${plOutputs.WEB_IMAGE_BUCKET}`)
-    exec(`aws s3 cp "../../apps/www/public/images" "s3://${plOutputs.WEB_IMAGE_BUCKET}/images" --recursive`)
+    exec(`aws s3 cp "../code/public/images" "s3://${plOutputs.WEB_IMAGE_BUCKET}/images" --recursive`)
 
     // Invalidate Cache
     console.log(`Invalidating CF (${plOutputs.WEB_CLOUDFRONT_ID}) cache...`)
