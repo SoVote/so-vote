@@ -18,7 +18,7 @@ createS3Objects(getAllFiles('../code/.open-next/cache'), webCacheBucket.bucket)
 export const webImageBucket = new aws.s3.Bucket(`${resourcePrefix}-app-images`, {
   forceDestroy: true
 });
-createS3Objects(getAllFiles('../code/.open-next/images'), webImageBucket.bucket)
+createS3Objects(getAllFiles('../code/public/images'), webImageBucket.bucket)
 
 function createS3Objects(files: string[], bucket: Output<string>){
   for(const file of files){
