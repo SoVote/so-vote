@@ -30,6 +30,7 @@ export const webServerLambda = new aws.lambda.Function(`${resourcePrefix}-server
   runtime: 'nodejs18.x',
   memorySize: 1024,
   timeout: 10,
+  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/server-function'),
   }),
@@ -58,6 +59,7 @@ export const webImageOptimizationLambda = new aws.lambda.Function(`${resourcePre
   runtime: 'nodejs18.x',
   memorySize: 1024,
   timeout: 10,
+  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/image-optimization-function'),
   }),
@@ -82,6 +84,7 @@ export const webCacheRevalidationLambda = new aws.lambda.Function(`${resourcePre
   runtime: 'nodejs18.x',
   memorySize: 512,
   timeout: 10,
+  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/revalidation-function'),
   }),
@@ -101,6 +104,7 @@ export const webWarmerLambda = new aws.lambda.Function(`${resourcePrefix}-lambda
   runtime: 'nodejs18.x',
   memorySize: 512,
   timeout: 10,
+  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/warmer-function'),
   }),
