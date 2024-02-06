@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`authEmailTokenOperations should encrypt and decrypt valid tokens correctly 1`] = `""{\\"email\\":\\"some@email.address\\",\\"issued\\":\\"2024-01-01T00:00:00.000Z\\"}""`;
+
+exports[`authEmailTokenOperations should throw an error if the token is invalid 1`] = `"Unsupported state or unable to authenticate data"`;
