@@ -14,7 +14,7 @@ on:
 
 jobs:
   auth-service:
-    uses: './.github/workspaces/serviceUp.yaml'
+    uses: ./.github/workflows/serviceUp.yaml
     with:
       name: 'auth'
 
