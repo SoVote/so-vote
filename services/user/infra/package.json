@@ -1,0 +1,18 @@
+{
+    "name": "@rainbow-husky/user-service-infra",
+    "main": "src/index.ts",
+    "scripts": {
+        "build": "",
+        "deploy": "infra-scripts deploy",
+        "destroy": "infra-scripts destroy"
+    },
+    "devDependencies": {
+        "@types/node": "^18"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^6.0.0",
+        "@pulumi/awsx": "^2.0.2",
+        "@pulumi/pulumi": "^3.0.0",
+        "@rainbow-husky/infra-scripts": "workspace:^"
+    }
+}

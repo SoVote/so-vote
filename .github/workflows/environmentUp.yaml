@@ -22,6 +22,14 @@ jobs:
       name: 'auth'
 
 
+  user-service:
+    permissions:
+      id-token: write
+      contents: read
+    uses: ./.github/workflows/serviceUp.yaml
+    with:
+      name: 'user'
+
   web-app:
     name: Web app
     needs:
