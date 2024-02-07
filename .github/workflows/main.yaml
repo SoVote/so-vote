@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  call-workflow-passing-data:
+  call-workflow-passing-datas:
     permissions:
       contents: read
       pull-requests: write
