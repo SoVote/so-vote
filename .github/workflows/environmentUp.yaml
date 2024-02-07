@@ -14,10 +14,9 @@ on:
 
 jobs:
   auth-service:
-    uses: './reusable/serviceUp.yaml'
+    uses: './.github/workspaces/serviceUp.yaml'
     with:
       name: 'auth'
-
 
   web-app:
     name: Web app
