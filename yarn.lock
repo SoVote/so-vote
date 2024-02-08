@@ -2846,6 +2846,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@rainbow-husky/user-service-code@workspace:services/user/code":
+  version: 0.0.0-use.local
+  resolution: "@rainbow-husky/user-service-code@workspace:services/user/code"
+  dependencies:
+    "@aws-sdk/client-sesv2": ^3.484.0
+    "@rainbow-husky/email-templates": "workspace:^"
+    "@react-email/render": ^0.0.10
+    "@testing-library/react": ^14.1.2
+    "@types/jest": ^29.5.5
+    aws-sdk-client-mock: ^3.0.0
+    aws-sdk-client-mock-jest: ^3.0.0
+    jest: ^29.7.0
+    ts-jest: ^29.1.1
+    typescript: ^5.2.2
+  languageName: unknown
+  linkType: soft
+
+"@rainbow-husky/user-service-infra@workspace:services/user/infra":
+  version: 0.0.0-use.local
+  resolution: "@rainbow-husky/user-service-infra@workspace:services/user/infra"
+  dependencies:
+    "@pulumi/aws": ^6.0.0
+    "@pulumi/awsx": ^2.0.2
+    "@pulumi/pulumi": ^3.0.0
+    "@rainbow-husky/infra-scripts": "workspace:^"
+    "@types/node": ^18
+  languageName: unknown
+  linkType: soft
+
 "@rainbow-husky/web-app-code@workspace:apps/web/code":
   version: 0.0.0-use.local
   resolution: "@rainbow-husky/web-app-code@workspace:apps/web/code"
