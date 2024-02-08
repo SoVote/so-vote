@@ -16,8 +16,6 @@ jobs:
     name: Shared Infrastructure
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    outputs:
-      auth-service-function-name: ${{ steps.release.outputs.auth-service-function-name }}
     permissions:
       id-token: write
       contents: read

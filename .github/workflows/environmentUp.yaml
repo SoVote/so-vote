@@ -21,7 +21,6 @@ jobs:
     with:
       name: 'auth'
 
-
   user-service:
     permissions:
       id-token: write
@@ -78,7 +77,7 @@ jobs:
 
       - name: Release
         env:
-          WWW_ARTIFACTS: ${{needs.auth-service.outputs.auth-service-function-name}}
+          WWW_ARTIFACTS: ${{needs.auth-service.outputs.api-function-name}}
           PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
         run: |
           export PULUMI_CONFIG_PASSPHRASE=

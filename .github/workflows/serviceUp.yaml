@@ -16,7 +16,7 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     outputs:
-      release-outputs: ${{ steps.release.outputs }}
+      api-function-name: ${{ steps.release.outputs.api-function-name }}
     permissions:
       id-token: write
       contents: read
