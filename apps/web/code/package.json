@@ -1,7 +1,6 @@
 {
   "name": "@rainbow-husky/web-app-code",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "engines": {
     "node": ">=18.0.0"
