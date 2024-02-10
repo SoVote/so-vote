@@ -27,7 +27,7 @@ export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
 
 export const userApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
   role: userApiLambdaRole.id,
-  policy: JSON.stringify({
+  policy: lambdaLogGroup.arn.apply(arn => JSON.stringify({
     Version: "2012-10-17",
     Statement: [
       {
@@ -38,10 +38,10 @@ export const userApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}
         ],
         Effect: "Allow",
         Resource: [
-          lambdaLogGroup.arn.apply(arn => arn),
-          lambdaLogGroup.arn.apply(arn => `${arn}/*`)
+          arn,
+          `${arn}/*`
         ]
       },
     ],
-  }),
+  })),
 });
