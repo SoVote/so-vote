@@ -22,7 +22,9 @@ export const webLambdaRole = new aws.iam.Role(`${resourcePrefix}-lambda-role`, {
 });
 
 
-export const webServerLambda = new aws.lambda.Function(`${resourcePrefix}-server`, {
+const webServerLambdaName = `${resourcePrefix}-server`
+export const webServerLambda = new aws.lambda.Function(webServerLambdaName, {
+  name: webServerLambdaName,
   description: 'Server Lambda for Next CloudFront distribution',
   role: webLambdaRole.arn,
   architectures: ['arm64'],
@@ -50,7 +52,9 @@ export const webServerLambdaUrl = new aws.lambda.FunctionUrl(`${resourcePrefix}-
 })
 
 
-export const webImageOptimizationLambda = new aws.lambda.Function(`${resourcePrefix}-image-optimization`, {
+const webImageOptimizationLambdaName = `${resourcePrefix}-image-optimization`
+export const webImageOptimizationLambda = new aws.lambda.Function(webImageOptimizationLambdaName, {
+  name: webImageOptimizationLambdaName,
   description: 'Image Lambda for Next CloudFront distribution',
   role: webLambdaRole.arn,
   architectures: ['arm64'],
@@ -74,7 +78,9 @@ export const webImageOptimisationLambdaUrl = new aws.lambda.FunctionUrl(`${resou
 })
 
 
-export const webCacheRevalidationLambda = new aws.lambda.Function(`${resourcePrefix}-cache-revalidation`, {
+const webCacheRevalidationLambdaName = `${resourcePrefix}-cache-revalidation`
+export const webCacheRevalidationLambda = new aws.lambda.Function(webCacheRevalidationLambdaName, {
+  name: webCacheRevalidationLambdaName,
   description: 'Lambda to revalidate the cache',
   role: webLambdaRole.arn,
   architectures: ['arm64'],
@@ -169,7 +175,8 @@ const webLambdaPolicy = new aws.iam.Policy(`${resourcePrefix}-lambda-policy`, {
           'dynamodb:Query',
         ],
         Resource: [
-          webCacheRevalidationTable.arn
+          webCacheRevalidationTable.arn,
+          pulumi.interpolate`${webCacheRevalidationTable.arn}/*`
         ]
       }
     ],
