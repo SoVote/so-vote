@@ -1,6 +1,6 @@
 import { SendEmailCommand, SESv2Client } from "@aws-sdk/client-sesv2";
 import { InvokeCommand, LambdaClient } from "@aws-sdk/client-lambda";
-import { authApiFunction } from "../../../serviceApiFunctions";
+import { authApiFunction } from "@/serviceApiFunctions";
 
 const client = new SESv2Client();
 const lambdaClient = new LambdaClient();
