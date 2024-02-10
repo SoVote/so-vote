@@ -1,6 +1,6 @@
 import * as aws from "@pulumi/aws";
 import * as pulumi from "@pulumi/pulumi";
-import { branchName, prNumber, resourcePrefix, webDomain } from "./variables";
+import { branchName, isMain, prNumber, resourcePrefix, webDomain } from "./variables";
 import {webCacheBucket, webImageBucket} from "./s3";
 import {webCacheRevalidationQueue} from "./sqs";
 import {webCacheRevalidationTable} from "./dynamoDb";
@@ -179,6 +179,16 @@ const webLambdaPolicy = new aws.iam.Policy(`${resourcePrefix}-lambda-policy`, {
         Resource: [
           webCacheRevalidationTable.arn,
           pulumi.interpolate`${webCacheRevalidationTable.arn}/*`
+        ]
+      },
+      {
+        Effect: 'Allow',
+        Action: [
+          'lambda:InvokeFunction',
+        ],
+        Resource: [
+          `arn:aws:lambda:eu-west-1:519396255280:function:rh-${isMain ? 'main' : `pr-${prNumber}`}-auth-api`,
+          `arn:aws:lambda:eu-west-1:519396255280:function:rh-${isMain ? 'main' : `pr-${prNumber}`}-user-api`,
         ]
       }
     ],
