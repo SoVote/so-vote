@@ -38,7 +38,8 @@ export const userApiLambdaRolePolicy = new aws.iam.RolePolicy("testPolicy", {
         ],
         Effect: "Allow",
         Resource: [
-          '*'
+          lambdaLogGroup.arn.apply(arn => arn),
+          lambdaLogGroup.arn.apply(arn => `${arn}/*`)
         ]
       },
     ],
