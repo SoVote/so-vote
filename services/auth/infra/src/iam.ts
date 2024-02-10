@@ -1,4 +1,5 @@
 import * as aws from "@pulumi/aws";
+import * as pulumi from '@pulumi/pulumi';
 import {lambdaLogGroup} from "./cloudwatch";
 import {resourcePrefix} from "./variables";
 
@@ -27,10 +28,27 @@ export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
               "logs:PutLogEvents",
             ],
             Effect: "Allow",
-            Resource: lambdaLogGroup.arn
+            Resource: [
+              lambdaLogGroup.arn,
+              pulumi.interpolate`${lambdaLogGroup.arn}/*`
+            ]
           },
         ],
       })
     },
   ]
 });
+
+// const inlinePolicy = aws.iam.getPolicyDocument({
+//   statements: [{
+//     actions: [
+//       "logs:CreateLogGroup",
+//       "logs:CreateLogStream",
+//       "logs:PutLogEvents",
+//     ],
+//     effect: 'Allow',
+//     resources: [
+//       lambdaLogGroup.arn
+//     ],
+//   }],
+// });
