@@ -25,7 +25,7 @@ export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
   ]
 });
 
-export const userApiLambdaRolePolicy = new aws.iam.RolePolicy("testPolicy", {
+export const userApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
   role: userApiLambdaRole.id,
   policy: JSON.stringify({
     Version: "2012-10-17",

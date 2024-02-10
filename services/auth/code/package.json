@@ -1,6 +1,7 @@
 {
   "name": "@rainbow-husky/auth-service-code",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "packageManager": "yarn@3.4.1",
   "scripts": {
