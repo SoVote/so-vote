@@ -20,35 +20,28 @@ export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
     {
       policy: JSON.stringify({
         Version: "2012-10-17",
-        Statement: [
-          {
-            Action: [
-              "logs:CreateLogGroup",
-              "logs:CreateLogStream",
-              "logs:PutLogEvents",
-            ],
-            Effect: "Allow",
-            Resource: [
-              lambdaLogGroup.arn,
-              pulumi.interpolate`${lambdaLogGroup.arn}/*`
-            ]
-          },
-        ],
       })
     },
   ]
 });
 
-// const inlinePolicy = aws.iam.getPolicyDocument({
-//   statements: [{
-//     actions: [
-//       "logs:CreateLogGroup",
-//       "logs:CreateLogStream",
-//       "logs:PutLogEvents",
-//     ],
-//     effect: 'Allow',
-//     resources: [
-//       lambdaLogGroup.arn
-//     ],
-//   }],
-// });
+new aws.iam.RolePolicy("testPolicy", {
+  role: userApiLambdaRole.id,
+  policy: JSON.stringify({
+    Version: "2012-10-17",
+    Statement: [
+      {
+        Action: [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+        ],
+        Effect: "Allow",
+        Resource: [
+          lambdaLogGroup.arn,
+          pulumi.interpolate`${lambdaLogGroup.arn}/*`
+        ]
+      },
+    ],
+  }),
+});
