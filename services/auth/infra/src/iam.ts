@@ -38,8 +38,7 @@ export const userApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}
         ],
         Effect: "Allow",
         Resource: [
-          arn,
-          `${arn}/*`
+          arn
         ]
       },
     ],
