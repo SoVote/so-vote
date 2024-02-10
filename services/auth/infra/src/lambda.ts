@@ -7,7 +7,9 @@ const authCode = new pulumi.asset.AssetArchive({
   '.': new pulumi.asset.FileArchive('../code/dist'),
 })
 
-export const authApiLambda = new aws.lambda.Function(`${resourcePrefix}${authApiSuffix}`, {
+const authApiLambdaName = `${resourcePrefix}${authApiSuffix}`
+export const authApiLambda = new aws.lambda.Function(authApiLambdaName, {
+  name: authApiLambdaName,
   architectures: ["x86_64"],
   environment: {
     variables: { },
