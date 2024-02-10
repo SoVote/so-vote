@@ -4,7 +4,7 @@ const nextConfig = {
     serverMinification: false
   },
   transpilePackages: [
-
+    '@aws-sdk/client-lambda'
   ]
 }
 
