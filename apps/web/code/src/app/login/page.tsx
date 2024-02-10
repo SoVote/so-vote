@@ -1,5 +1,6 @@
 import { SendEmailCommand, SESv2Client } from "@aws-sdk/client-sesv2";
 import { InvokeCommand, LambdaClient } from "@aws-sdk/client-lambda";
+import { authApiFunction } from "../../../serviceApiFunctions";
 
 const client = new SESv2Client();
 const lambdaClient = new LambdaClient();
@@ -10,7 +11,7 @@ export default async function LoginPage() {
     'use server';
     const payload = { op: 'initiate-login', payload: { email: formData.get('email') }}
     const { Payload } = await lambdaClient.send(
-      new InvokeCommand({ FunctionName: process.env.AUTH_API_FUNCTION_NAME, Payload: JSON.stringify(payload) }),
+      new InvokeCommand({ FunctionName: authApiFunction, Payload: JSON.stringify(payload) }),
     );
     const resultPayload = JSON.parse(Buffer.from(Payload as any).toString('utf-8'));
     if (resultPayload?.errorType) {

@@ -33,8 +33,6 @@ jobs:
 
   web-app:
     name: Web app
-    needs:
-      - auth-service
     timeout-minutes: 15
     runs-on: ubuntu-latest
     permissions:
@@ -79,11 +77,10 @@ jobs:
 
       - name: Release
         env:
-          WWW_ARTIFACTS: ${{needs.auth-service.outputs.api-function-name}}
           PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PULUMI_CONFIG_PASSPHRASE: ""
         run: |
-          export PULUMI_CONFIG_PASSPHRASE=
-          export PR_NUMBER=${{ github.event.pull_request.number }}
           yarn build --filter=@rainbow-husky/web-app-code
           yarn deploy --filter=@rainbow-husky/www-app-infra
 
