@@ -1,6 +1,6 @@
 import * as aws from "@pulumi/aws";
 import * as pulumi from "@pulumi/pulumi";
-import { resourcePrefix, webDomain } from "./variables";
+import { branchName, prNumber, resourcePrefix, webDomain } from "./variables";
 import {webCacheBucket, webImageBucket} from "./s3";
 import {webCacheRevalidationQueue} from "./sqs";
 import {webCacheRevalidationTable} from "./dynamoDb";
@@ -42,6 +42,8 @@ export const webServerLambda = new aws.lambda.Function(webServerLambdaName, {
       REVALIDATION_QUEUE_URL: webCacheRevalidationQueue.url,
       REVALIDATION_QUEUE_REGION: webCacheBucket.region,
       CACHE_DYNAMO_TABLE: webCacheRevalidationTable.name,
+      PR_NUMBER: prNumber,
+      BRANCH: branchName
     }
   }
 });
