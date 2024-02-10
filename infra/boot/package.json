@@ -15,8 +15,8 @@
     "eslint": "^8.56.0"
   },
   "dependencies": {
-    "@pulumi/aws": "^6.17.0",
-    "@pulumi/awsx": "^2.4.0",
-    "@pulumi/pulumi": "^3.100.0"
+    "@pulumi/aws": "^6.21.0",
+    "@pulumi/awsx": "^2.5.0",
+    "@pulumi/pulumi": "^3.105.0"
   }
 }

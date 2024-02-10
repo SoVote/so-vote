@@ -10,9 +10,9 @@
     "@types/node": "^18"
   },
   "dependencies": {
-    "@pulumi/aws": "^6.0.0",
-    "@pulumi/awsx": "^2.0.2",
-    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/aws": "^6.21.0",
+    "@pulumi/awsx": "^2.5.0",
+    "@pulumi/pulumi": "^3.105.0",
     "@rainbow-husky/infra-scripts": "workspace:^"
   }
 }
