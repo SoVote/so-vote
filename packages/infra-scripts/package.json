@@ -13,6 +13,8 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
+    "@repo/typescript-config": "workspace:^",
+    "@types/node": "^20.11.17",
     "@types/shelljs": "^0.8.15"
   }
 }
