@@ -6,6 +6,7 @@ import { defineDestroyScript } from "./destroy";
 import { defineGlobalDeployScript } from "./deployGlobal";
 import { defineSharedDeployScript } from "./deployShared";
 import { defineDeployWebScript } from "./deployWeb";
+import { defineDeployEnvScript } from "./deployEnv";
 
 const program = new Command()
 
@@ -15,6 +16,7 @@ program
 
 
 defineDeployScript(program)
+defineDeployEnvScript(program)
 defineDeployWebScript(program)
 defineSharedDeployScript(program)
 defineGlobalDeployScript(program)

@@ -7,7 +7,7 @@ import { getBranch } from "./utils/getBranch";
 import { getPrNumber } from "./utils/getPrNumber";
 import { getPulumiOutputs } from "./utils/getPulumiOutputs";
 
-export const defineDeployScript = (program: Command) => {
+export const defineDeployEnvScript = (program: Command) => {
   program.command('deploy-env')
   .option('--config', 'The path to the config file', 'infra.config.json')
   .option('--troubleshoot', 'Runs the script in troubleshooting mode', false)
