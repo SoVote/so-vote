@@ -13,8 +13,8 @@ on:
       - '!infra/*/**'
 
 jobs:
-  service-dependency-layers:
-    name: Service Dependency Layers
+  dependency-layers:
+    name: Lambda Dependency Layers
     timeout-minutes: 15
     runs-on: ubuntu-latest
     permissions:
@@ -46,8 +46,13 @@ jobs:
         run: |
           pulumi login s3://rainbow-husky-pulumi-state
 
-      - name: Deploy
-        run: yarn deploy-service-layers
+      - name: Release
+        env:
+          PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PULUMI_CONFIG_PASSPHRASE: ""
+        run: |
+          yarn deploy --filter=@rainbow-husky/env-infra
 
 
   auth-service:
