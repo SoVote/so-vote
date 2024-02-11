@@ -2,7 +2,7 @@
   "name": "@rainbow-husky/user-service-code",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.1.0",
   "scripts": {
     "build": "tsc",
     "test": "jest"
@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@rainbow-husky/email-templates": "workspace:^",
-    "@testing-library/react": "^14.1.2",
     "@types/jest": "^29.5.5",
     "aws-sdk-client-mock": "^3.0.0",
     "aws-sdk-client-mock-jest": "^3.0.0",

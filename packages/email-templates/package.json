@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-husky/email-templates",
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.1.0",
   "main": "src/index.ts",
   "dependencies": {
     "@rainbow-husky/common-ui": "workspace:^",
