@@ -2773,6 +2773,7 @@ __metadata:
     "@pulumi/pulumi": "npm:^3.105.0"
     "@rainbow-husky/infra-scripts": "workspace:^"
     "@types/node": "npm:^16"
+    tslib: "npm:^2.6.2"
   languageName: unknown
   linkType: soft
 

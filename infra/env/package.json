@@ -6,7 +6,8 @@
         "deploy": "infra-scripts deploy-env"
     },
     "devDependencies": {
-        "@types/node": "^16"
+        "@types/node": "^16",
+        "tslib": "^2.6.2"
     },
     "dependencies": {
         "@pulumi/aws": "^6.21.0",

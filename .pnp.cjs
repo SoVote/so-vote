@@ -3774,7 +3774,8 @@ const RAW_RUNTIME_STATE =
           ["@pulumi/awsx", "npm:2.5.0"],\
           ["@pulumi/pulumi", "npm:3.105.0"],\
           ["@rainbow-husky/infra-scripts", "workspace:packages/infra-scripts"],\
-          ["@types/node", "npm:16.18.69"]\
+          ["@types/node", "npm:16.18.69"],\
+          ["tslib", "npm:2.6.2"]\
         ],\
         "linkType": "SOFT"\
       }]\
