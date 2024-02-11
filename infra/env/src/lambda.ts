@@ -9,7 +9,7 @@ export const dependenciesLayer = new aws.lambda.LayerVersion(layerName, {
   compatibleRuntimes: ['nodejs18.x'],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../../.yarn/cache'),
-    '.pnp.cjs': new pulumi.asset.FileArchive('../../.pnp.cjs'),
-    '.pnp.loader.mjs': new pulumi.asset.FileArchive('../../.pnp.cjs'),
+    '.pnp.cjs': new pulumi.asset.FileAsset('../../.pnp.cjs'),
+    '.pnp.loader.mjs': new pulumi.asset.FileAsset('../../.pnp.cjs'),
   }),
 });
