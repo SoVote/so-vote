@@ -32,11 +32,6 @@ jobs:
           node-version: 18
           cache: 'yarn'
 
-      - name: Install infra-scripts dependencies
-        run: |
-          yarn workspaces focus @rainbow-husky/infra-scripts
-          mv node_modules packages/infra-scripts/node_modules
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -106,8 +101,8 @@ jobs:
           node-version: 18
           cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn
+#      - name: Install dependencies
+#        run: yarn
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
