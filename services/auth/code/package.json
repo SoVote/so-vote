@@ -1,11 +1,10 @@
 {
   "name": "@rainbow-husky/auth-service-code",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "packageManager": "yarn@4.1.0",
   "scripts": {
-    "build": "tsc",
+    "build": "node esbuild.config.js",
     "test": "jest"
   },
   "engines": {
@@ -22,6 +21,7 @@
     "@typescript-eslint/parser": "^6.21.0",
     "aws-sdk-client-mock": "^3.0.0",
     "aws-sdk-client-mock-jest": "^3.0.0",
+    "esbuild": "^0.20.0",
     "eslint": "^8.56.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-turbo": "^1.12.3",
