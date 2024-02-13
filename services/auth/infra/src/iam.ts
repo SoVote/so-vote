@@ -15,14 +15,7 @@ export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
         Action: 'sts:AssumeRole'
       }
     ]
-  },
-  inlinePolicies: [
-    {
-      policy: JSON.stringify({
-        Version: "2012-10-17",
-      })
-    },
-  ]
+  }
 });
 
 export const authApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
