@@ -51,7 +51,7 @@ jobs:
         with:
           aws-region: eu-west-1
           role-to-assume: ${{ secrets.GH_ACTIONS_ROLE_ARN }}
-          role-session-name: AuthSession
+          role-session-name: ServiceSession
 
       - name: Use Pulumi
         uses: pulumi/actions@v4
