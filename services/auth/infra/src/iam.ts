@@ -15,26 +15,32 @@ export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
         Action: 'sts:AssumeRole'
       }
     ]
-  }
-});
-
-export const authApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
-  role: authApiLambdaRole.id,
-  policy: lambdaLogGroup.arn.apply(arn => JSON.stringify({
-    Version: "2012-10-17",
-    Statement: [
-      {
-        Action: [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents",
+  },
+  inlinePolicies: [
+    {
+      name: 'logs',
+      policy: lambdaLogGroup.arn.apply(arn => JSON.stringify({
+        Version: "2012-10-17",
+        Statement: [
+          {
+            Action: [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents",
+            ],
+            Effect: "Allow",
+            Resource: [
+              arn,
+              `${arn}*`
+            ]
+          },
         ],
-        Effect: "Allow",
-        Resource: [
-          arn,
-          `${arn}*`
-        ]
-      },
-    ],
-  })),
+      })),
+    },
+  ]
 });
+//
+// export const authApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
+//   role: authApiLambdaRole.id,
+//   policy:
+// });
