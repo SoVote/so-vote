@@ -1,5 +1,6 @@
 import { authApiLambda } from  './lambda'
 import './cloudwatch'
-import * as iam from './iam'
+import { authApiLambdaRolePolicy } from './iam'
 
 export const API_FUNCTION_NAME = authApiLambda.name
+export const API_LAMBDA_ROLE_POLICY_ID = authApiLambdaRolePolicy.id

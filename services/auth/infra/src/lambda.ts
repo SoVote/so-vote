@@ -1,6 +1,6 @@
 import * as aws from "@pulumi/aws";
 import * as pulumi from "@pulumi/pulumi";
-import {userApiLambdaRole} from "./iam";
+import {authApiLambdaRole} from "./iam";
 import { resourcePrefix, authApiSuffix } from "./variables";
 
 const authCode = new pulumi.asset.AssetArchive({
@@ -19,7 +19,7 @@ export const authApiLambda = new aws.lambda.Function(authApiLambdaName, {
   },
   handler: "api.handle",
   packageType: "Zip",
-  role: userApiLambdaRole.arn,
+  role: authApiLambdaRole.arn,
   runtime: "nodejs18.x",
   code: authCode,
   timeout: 25,

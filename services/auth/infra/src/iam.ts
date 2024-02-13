@@ -3,7 +3,7 @@ import * as pulumi from '@pulumi/pulumi';
 import {lambdaLogGroup} from "./cloudwatch";
 import {resourcePrefix} from "./variables";
 
-export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-role`, {
+export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-role`, {
   assumeRolePolicy: {
     Version: '2012-10-17',
     Statement: [
@@ -25,8 +25,8 @@ export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
   ]
 });
 
-export const userApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
-  role: userApiLambdaRole.id,
+export const authApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
+  role: authApiLambdaRole.id,
   policy: lambdaLogGroup.arn.apply(arn => JSON.stringify({
     Version: "2012-10-17",
     Statement: [
