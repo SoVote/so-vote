@@ -1,5 +1,5 @@
 require('esbuild').buildSync({
-  entryPoints: ['src/api.ts'],
+  entryPoints: ['src/index.ts'],
   bundle: true,
   platform: 'node',
   jsx: 'automatic',
