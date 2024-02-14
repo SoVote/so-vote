@@ -1,16 +1,19 @@
 import { MagicLinkEmail } from "@rainbow-husky/email-templates";
 import { SendEmailCommand, SESv2Client } from "@aws-sdk/client-sesv2";
 import { render } from "@react-email/render";
+import crypto from 'crypto'
+import { generateAuthEmailToken } from "./authEmailTokenOperations";
 
 const client = new SESv2Client();
 
 export const initiateLogin = async (email: string) => {
-  const htmlContent = render(<MagicLinkEmail firstTime={false} />)
+  const token = generateAuthEmailToken(email)
+  const htmlContent = render(<MagicLinkEmail firstTime={false} token={token} />)
   const input = { // SendEmailRequest
     FromEmailAddress: "test@sovote.com",
     Destination: { // Destination
       ToAddresses: [ // EmailAddressList
-        "jon@node28.com",
+        email,
       ],
     },
     ReplyToAddresses: [
