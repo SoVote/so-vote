@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`authEmailTokenOperations should throw an error if the token is invalid 1`] = `"Unsupported state or unable to authenticate data"`;

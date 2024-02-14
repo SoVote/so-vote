@@ -2859,6 +2859,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^6.21.0"
     aws-sdk-client-mock: "npm:^3.0.0"
     aws-sdk-client-mock-jest: "npm:^3.0.0"
+    date-fns: "npm:^3.3.1"
     esbuild: "npm:^0.20.0"
     eslint: "npm:^8.56.0"
     eslint-plugin-only-warn: "npm:^1.1.0"
@@ -6105,6 +6106,13 @@ __metadata:
   version: 6.0.1
   resolution: "data-uri-to-buffer@npm:6.0.1"
   checksum: 10/9140e68c585ae33d950f5943bd476751346c8b789ae80b01a578a33cb8f7f706d1ca7378aff2b1878b2a6d9a8c88c55cc286d88191c8b8ead8255c3c4d934530
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "date-fns@npm:3.3.1"
+  checksum: 10/98231936765dfb6fc6897676319b500a06a39f051b2c3ecbdd541a07ce9b1344b770277b8bfb1049fb7a2f70bf365ac8e6f1e2bb452b10e1a8101d518ca7f95d
   languageName: node
   linkType: hard
 
