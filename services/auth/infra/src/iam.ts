@@ -1,7 +1,7 @@
 import * as aws from "@pulumi/aws";
 import * as pulumi from '@pulumi/pulumi';
 import {lambdaLogGroup} from "./cloudwatch";
-import {resourcePrefix} from "./variables";
+import { accountNumber, resourcePrefix } from "./variables";
 
 export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-role`, {
   assumeRolePolicy: {
@@ -32,6 +32,23 @@ export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
             Resource: [
               arn,
               `${arn}*`
+            ]
+          },
+        ],
+      })),
+    },
+    {
+      name: 'ses',
+      policy: lambdaLogGroup.arn.apply(arn => JSON.stringify({
+        Version: "2012-10-17",
+        Statement: [
+          {
+            Action: [
+              "ses:SendEmail",
+            ],
+            Effect: "Allow",
+            Resource: [
+              `arn:aws:ses:eu-west-1:${accountNumber}:identity/*`
             ]
           },
         ],
