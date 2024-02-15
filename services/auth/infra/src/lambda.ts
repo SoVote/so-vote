@@ -12,7 +12,10 @@ export const authApiLambda = new aws.lambda.Function(authApiLambdaName, {
   name: authApiLambdaName,
   architectures: ["x86_64"],
   environment: {
-    variables: { },
+    variables: {
+      BRANCH: process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME || '',
+      PR_NUMBER: process.env.PR_NUMBER || ''
+    },
   },
   ephemeralStorage: {
     size: 512,

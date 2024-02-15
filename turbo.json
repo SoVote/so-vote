@@ -1,6 +1,11 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "GITHUB_HEAD_REF",
+    "GITHUB_REF_NAME",
+    "PR_NUMBER"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
