@@ -8,7 +8,7 @@ const client = new SESv2Client();
 
 export const initiateLogin = async (email: string) => {
   const token = generateAuthEmailToken(email)
-  const baseUrl = `https://${process.env.BRANCH !== 'main' ? '' : `dev-${process.env.PR_NUMBER}.`}sovote.com`
+  const baseUrl = `https://${process.env.BRANCH === 'main' ? '' : `dev-${process.env.PR_NUMBER}.`}sovote.com`
   const htmlContent = render(<MagicLinkEmail firstTime={false} token={token} baseUrl={baseUrl} />)
   const input = { // SendEmailRequest
     FromEmailAddress: "test@sovote.com",
