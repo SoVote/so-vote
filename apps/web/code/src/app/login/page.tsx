@@ -1,5 +1,6 @@
 import { InvokeCommand, LambdaClient } from "@aws-sdk/client-lambda";
 import { authApiFunction } from "@/serviceApiFunctions";
+import { getEnvironment } from "@/getEnvironment";
 
 const lambdaClient = new LambdaClient();
 
@@ -7,7 +8,7 @@ export default async function LoginPage() {
 
   async function login(formData: FormData) {
     'use server';
-    const payload = { op: 'initiate-login', payload: { email: formData.get('email'), environment: process.env.NODE_ENV === 'development' ? 'local' :  }}
+    const payload = { op: 'initiate-login', payload: { email: formData.get('email'), environment: getEnvironment() }}
     console.log(`Initiating login with auth service ${authApiFunction}...`)
     const { Payload } = await lambdaClient.send(
       new InvokeCommand({ FunctionName: authApiFunction, Payload: JSON.stringify(payload) }),
