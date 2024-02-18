@@ -42,8 +42,8 @@ export const webServerLambda = new aws.lambda.Function(webServerLambdaName, {
       REVALIDATION_QUEUE_URL: webCacheRevalidationQueue.url,
       REVALIDATION_QUEUE_REGION: webCacheBucket.region,
       CACHE_DYNAMO_TABLE: webCacheRevalidationTable.name,
-      PR_NUMBER: prNumber,
-      BRANCH: branchName
+      NEXT_PUBLIC_PR_NUMBER: prNumber,
+      NEXT_PUBLIC_BRANCH: branchName
     }
   }
 });

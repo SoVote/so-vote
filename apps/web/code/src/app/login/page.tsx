@@ -29,7 +29,6 @@ ${resultPayload.trace?.join('\r\n')}
   return (
     <>
       <div className='py-10 text-center'>Login using your email address</div>
-
       <form action={login}>
         <input type='email' className='w-full block bg-skipper-blue rounded my-2 p-4' placeholder='email' name='email'/>
         <button className='w-full bg-plum-jam rounded p-4' type='submit'>Send Magic Link</button>
