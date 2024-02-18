@@ -85,7 +85,7 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          yarn generate-web-env-vars --filter=@rainbow-husky/web-app-infra
+          yarn generate-web-env-vars --filter=@rainbow-husky/web-app-code
 
       - name: Build
         run: |
