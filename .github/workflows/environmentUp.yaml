@@ -81,14 +81,22 @@ jobs:
         run: |
           pulumi login s3://rainbow-husky-pulumi-state
 
-      - name: Release
+      - name: Generate env vars
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          yarn generate-web-env-vars --filter=@rainbow-husky/web-app-infra
+
+      - name: Build
+        run: |
+          yarn build --filter=@rainbow-husky/web-app-code
+
+      - name: Deploy
         env:
           PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PULUMI_CONFIG_PASSPHRASE: ""
         run: |
-          yarn generate-web-env-vars --filter=@rainbow-husky/web-app-infra
-          yarn build --filter=@rainbow-husky/web-app-code
           yarn deploy --filter=@rainbow-husky/www-app-infra
 
 #      - name: Test
