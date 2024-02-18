@@ -7,7 +7,7 @@ export default async function LoginPage() {
 
   async function login(formData: FormData) {
     'use server';
-    const payload = { op: 'initiate-login', payload: { email: formData.get('email') }}
+    const payload = { op: 'initiate-login', payload: { email: formData.get('email'), environment: process.env.NODE_ENV === 'development' ? 'local' :  }}
     console.log(`Initiating login with auth service ${authApiFunction}...`)
     const { Payload } = await lambdaClient.send(
       new InvokeCommand({ FunctionName: authApiFunction, Payload: JSON.stringify(payload) }),

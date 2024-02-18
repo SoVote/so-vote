@@ -7,7 +7,8 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "deploy": "dotenv -- turbo deploy",
-    "destroy": "dotenv -- turbo destroy"
+    "destroy": "dotenv -- turbo destroy",
+    "generate-web-env-vars": "turbo generate-web-env-vars"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

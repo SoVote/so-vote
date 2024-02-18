@@ -4,7 +4,8 @@
   "globalEnv": [
     "GITHUB_HEAD_REF",
     "GITHUB_REF_NAME",
-    "PR_NUMBER"
+    "PR_NUMBER",
+    "BRANCH"
   ],
   "pipeline": {
     "build": {
@@ -23,6 +24,10 @@
       "cache": false
     },
     "destroy": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "generate-web-env-vars": {
       "dependsOn": ["^build"],
       "cache": false
     }

@@ -11,6 +11,7 @@ export const Target = () => {
           </svg>
         </div>
         Add book
+        {JSON.stringify(process.env)}
       </button>
     </>
   )

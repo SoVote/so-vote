@@ -7,12 +7,13 @@ import { defineGlobalDeployScript } from "./deployGlobal";
 import { defineSharedDeployScript } from "./deployShared";
 import { defineDeployWebScript } from "./deployWeb";
 import { defineDeployEnvScript } from "./deployEnv";
+import { defineGenerateWebEnvVarsScript } from "./generateWebEnvVars";
 
 const program = new Command()
 
 program
-  .name('deployment')
-  .description('Provides deployment facilities')
+  .name('pipeline scripts')
+  .description('Provides infrastructure, build and deployment facilities')
 
 
 defineDeployScript(program)
@@ -21,5 +22,6 @@ defineDeployWebScript(program)
 defineSharedDeployScript(program)
 defineGlobalDeployScript(program)
 defineDestroyScript(program)
+defineGenerateWebEnvVarsScript(program)
 
 program.parse()

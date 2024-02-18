@@ -3,7 +3,7 @@
     "main": "src/index.ts",
     "scripts": {
         "build": "",
-        "deploy": "infra-scripts deploy-env"
+        "deploy": "pipeline-scripts deploy-env"
     },
     "devDependencies": {
         "@types/eslint": "^8.56.0",
@@ -15,6 +15,6 @@
         "@pulumi/aws": "^6.21.0",
         "@pulumi/awsx": "^2.5.0",
         "@pulumi/pulumi": "^3.105.0",
-        "@rainbow-husky/infra-scripts": "workspace:^"
+        "@rainbow-husky/pipeline-scripts": "workspace:^"
     }
 }

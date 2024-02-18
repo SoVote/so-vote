@@ -3,8 +3,8 @@
     "main": "src/index.ts",
     "scripts": {
         "build": "",
-        "deploy": "infra-scripts deploy",
-        "destroy": "infra-scripts destroy"
+        "deploy": "pipeline-scripts deploy",
+        "destroy": "pipeline-scripts destroy"
     },
     "devDependencies": {
         "@types/node": "^18"
@@ -13,6 +13,6 @@
         "@pulumi/aws": "^6.21.0",
         "@pulumi/awsx": "^2.5.0",
         "@pulumi/pulumi": "^3.105.0",
-        "@rainbow-husky/infra-scripts": "workspace:^"
+        "@rainbow-husky/pipeline-scripts": "workspace:^"
     }
 }

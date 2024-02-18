@@ -87,6 +87,7 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PULUMI_CONFIG_PASSPHRASE: ""
         run: |
+          yarn generate-web-env-vars --filter=@rainbow-husky/web-app-infra
           yarn build --filter=@rainbow-husky/web-app-code
           yarn deploy --filter=@rainbow-husky/www-app-infra
 
