@@ -21,6 +21,6 @@ async function parseToken(token: string){
   const result = await lambdaClient.send(
     new InvokeCommand({ FunctionName: authApiFunction, Payload: JSON.stringify(payload) }),
   );
-  console.log({result})
+  console.log(Buffer.from(result.Payload as any).toString('utf-8'))
   return JSON.parse(Buffer.from(result.Payload as any).toString('utf-8'));
 }
