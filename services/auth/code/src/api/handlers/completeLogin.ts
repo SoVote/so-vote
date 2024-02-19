@@ -17,11 +17,14 @@ export const completeLogin = async (loginToken: string) => {
   try {
     const tokenBody = parseAuthEmailToken(loginToken)
     const ms = differenceInMilliseconds(Date.now(), tokenBody.issued)
-    if (ms > tokenTtl) response = {
-      result: 'invalid',
-      reason: 'Token expired'
-    }
-    else {
+    if (ms > tokenTtl) {
+      console.log('Token expired')
+      response = {
+        result: 'invalid',
+        reason: 'Token expired'
+      }
+    } else {
+      console.log('Token valid')
       const encodedSecret = new TextEncoder().encode(secret);
 
       const accessJwt = await createJWT('HS256', encodedSecret.buffer, { email: tokenBody?.email }, {
@@ -39,6 +42,7 @@ export const completeLogin = async (loginToken: string) => {
       }
     }
   } catch (err) {
+    console.log('Error parsing token')
     response = {
       result: 'invalid',
       reason: err
