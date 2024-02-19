@@ -13,37 +13,38 @@ const secret = 'VeTp5P0pUlfN5JPgP1pLbgEJogaQWMgY0Ev3dd2pYJV1rbvvZNZzG+mayLHxrTon
 
 const tokenTtl = 1000 * 60 * 15
 export const completeLogin = async (loginToken: string) => {
-  let loginTokenParseResult;
+  let response;
   try {
-    const result = parseAuthEmailToken(loginToken)
-    const ms = differenceInMilliseconds(Date.now(), result.issued)
-    if (ms > tokenTtl) return {
+    const tokenBody = parseAuthEmailToken(loginToken)
+    const ms = differenceInMilliseconds(Date.now(), tokenBody.issued)
+    if (ms > tokenTtl) response = {
       result: 'invalid',
       reason: 'Token expired'
     }
-    else loginTokenParseResult = { state: 'valid', body: result }
+    else {
+      const encodedSecret = new TextEncoder().encode(secret);
 
-    const encodedSecret = new TextEncoder().encode(secret);
+      const accessJwt = await createJWT('HS256', encodedSecret.buffer, { email: tokenBody?.email }, {
+        expiresIn: new TimeSpan(30, 'd')
+      })
 
-    const accessJwt = await createJWT('HS256', encodedSecret.buffer, { email: loginTokenParseResult?.body?.email }, {
-      expiresIn: new TimeSpan(30, 'd')
-    })
+      const refreshJwt = await createJWT('HS256', encodedSecret.buffer, { email: tokenBody?.email }, {
+        expiresIn: new TimeSpan(365, 'd')
+      })
 
-    const refreshJwt = await createJWT('HS256', encodedSecret.buffer, { email: loginTokenParseResult?.body?.email }, {
-      expiresIn: new TimeSpan(365, 'd')
-    })
-
-    return {
-      loginResult: loginTokenParseResult,
-      accessToken: accessJwt,
-      refreshToken: refreshJwt
+      response = {
+        result: 'valid',
+        accessToken: accessJwt,
+        refreshToken: refreshJwt
+      }
     }
-
   } catch (err) {
-    return {
+    response = {
       result: 'invalid',
       reason: err
     }
   }
 
+  console.log({ response })
+  return response
 }
