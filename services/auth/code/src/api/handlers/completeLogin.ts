@@ -1,18 +1,49 @@
 import { parseAuthEmailToken } from "../authEmailTokenOperations";
 import { differenceInMilliseconds } from "date-fns";
+import '../../webCryptoPolyfill'
+import { createJWT } from 'oslo/jwt'
+import { TimeSpan } from "oslo";
+
+const secret = 'VeTp5P0pUlfN5JPgP1pLbgEJogaQWMgY0Ev3dd2pYJV1rbvvZNZzG+mayLHxrTon' +
+  '5+RWrRsLIAc1p/Qkt3dXGGz4ZqVFgwpcZSSoqW5Cy4wEd3KDYO377CulpiGmTPSV' +
+  'dCivpWXZThWHuXNDSfUf1vb9/pt5B7VMEX1utTkoWoTaq/LA+p0fu7eJ3QUlXtC8' +
+  '9ofLHnGskrmiirkMDH3X93p7sygO1t+HZNlWgJvGe2cddrMOxc8yhvIQ3b2FRaVU' +
+  'TXLfPk7Noq7Vuvxr3tuHxPonbqk0A4AWyFVUTANCbbblBvPXbcR+PQBvaE+ROKyR' +
+  '1bRWjfaTQX5Klr9cHHza7w=='
 
 const tokenTtl = 1000 * 60 * 15
-export const completeLogin = (loginToken: string) => {
+export const completeLogin = async (loginToken: string) => {
   let loginTokenParseResult;
   try {
     const result = parseAuthEmailToken(loginToken)
     const ms = differenceInMilliseconds(Date.now(), result.issued)
-    if(ms > tokenTtl) loginTokenParseResult = { state: 'invalid', reason: 'Token expired' }
+    if (ms > tokenTtl) return {
+      result: 'invalid',
+      reason: 'Token expired'
+    }
     else loginTokenParseResult = { state: 'valid', body: result }
-  } catch (err) {
-    loginTokenParseResult = { state: 'invalid', reason: err }
-  }
-  console.log('Result of auth token parse: ', loginTokenParseResult)
 
-  return loginTokenParseResult
+    const encodedSecret = new TextEncoder().encode(secret);
+
+    const accessJwt = await createJWT('HS256', encodedSecret.buffer, { email: loginTokenParseResult?.body?.email }, {
+      expiresIn: new TimeSpan(30, 'd')
+    })
+
+    const refreshJwt = await createJWT('HS256', encodedSecret.buffer, { email: loginTokenParseResult?.body?.email }, {
+      expiresIn: new TimeSpan(365, 'd')
+    })
+
+    return {
+      loginResult: loginTokenParseResult,
+      accessToken: accessJwt,
+      refreshToken: refreshJwt
+    }
+
+  } catch (err) {
+    return {
+      result: 'invalid',
+      reason: err
+    }
+  }
+
 }
