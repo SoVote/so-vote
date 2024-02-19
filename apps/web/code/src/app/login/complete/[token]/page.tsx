@@ -18,8 +18,9 @@ async function parseToken(token: string){
 
   const payload = { op: 'parse-token', payload: { token } }
   console.log(`Parsing auth token with auth service ${authApiFunction}...`)
-  const { Payload } = await lambdaClient.send(
+  const result = await lambdaClient.send(
     new InvokeCommand({ FunctionName: authApiFunction, Payload: JSON.stringify(payload) }),
   );
-  return JSON.parse(Buffer.from(Payload as any).toString('utf-8'));
+  console.log({result})
+  return JSON.parse(Buffer.from(result.Payload as any).toString('utf-8'));
 }
