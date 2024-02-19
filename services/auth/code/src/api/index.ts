@@ -1,10 +1,10 @@
 import { initiateLogin } from "./handlers/initiateLogin";
-import { parseToken } from "./handlers/parseToken";
+import { completeLogin } from "./handlers/completeLogin";
 
 export const handle = async (event: { op: string, payload: any }) => {
   console.log({ event })
   switch(event.op){
     case 'initiate-login': return await initiateLogin(event.payload.email, event.payload.environment);
-    case 'parse-token': return parseToken(event.payload.token);
+    case 'complete-login': return completeLogin(event.payload.token);
   }
 }
