@@ -67,9 +67,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Disable TurboRepo telemetry
-        run: turbo telemetry disable
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
