@@ -11,7 +11,7 @@ export const initiateLogin = async (email: string, environment: 'prod' | 'dev' |
   if(environment === 'prod' && process.env.BRANCH === 'main'){
     baseUrl = 'https://sovote.com'
   } else if(environment === 'dev' && process.env.BRANCH !== 'main'){
-    baseUrl = `https://dev-${process.env.PR_NUMBER}sovote.com`
+    baseUrl = `https://dev-${process.env.PR_NUMBER}.sovote.com`
   } else if(environment === 'local' && process.env.BRANCH !== 'main'){
     baseUrl = 'http://localhost:3000'
   } else throw new Error(`Unrecognised environment "${environment}" for branch "${process.env.BRANCH}"`)
