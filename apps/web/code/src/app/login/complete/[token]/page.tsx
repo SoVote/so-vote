@@ -16,7 +16,7 @@ export default async function LoginCompleteTokenPage({ params }: { params: { tok
 
 async function parseToken(token: string){
 
-  const payload = { op: 'parse-token', payload: { token } }
+  const payload = { op: 'complete-login', payload: { token } }
   console.log(`Parsing auth token with auth service ${authApiFunction}...`)
   const result = await lambdaClient.send(
     new InvokeCommand({ FunctionName: authApiFunction, Payload: JSON.stringify(payload) }),
