@@ -4,12 +4,7 @@ import '../../webCryptoPolyfill'
 import { createJWT } from 'oslo/jwt'
 import { TimeSpan } from "oslo";
 
-const secret = 'VeTp5P0pUlfN5JPgP1pLbgEJogaQWMgY0Ev3dd2pYJV1rbvvZNZzG+mayLHxrTon' +
-  '5+RWrRsLIAc1p/Qkt3dXGGz4ZqVFgwpcZSSoqW5Cy4wEd3KDYO377CulpiGmTPSV' +
-  'dCivpWXZThWHuXNDSfUf1vb9/pt5B7VMEX1utTkoWoTaq/LA+p0fu7eJ3QUlXtC8' +
-  '9ofLHnGskrmiirkMDH3X93p7sygO1t+HZNlWgJvGe2cddrMOxc8yhvIQ3b2FRaVU' +
-  'TXLfPk7Noq7Vuvxr3tuHxPonbqk0A4AWyFVUTANCbbblBvPXbcR+PQBvaE+ROKyR' +
-  '1bRWjfaTQX5Klr9cHHza7w=='
+const secret = 'VeTp5P0pUlfN5JPgP1pLbgEJogaQWMgY0Ev3dd2pYJV1rbvvZNZzG+mayLHxrTon5+RWrRsLIAc1p/Qkt3dXGGz4ZqVFgwpcZSSoqW5Cy4wEd3KDYO377CulpiGmTPSVdCivpWXZThWHuXNDSfUf1vb9/pt5B7VMEX1utTkoWoTaq/LA+p0fu7eJ3QUlXtC89ofLHnGskrmiirkMDH3X93p7sygO1t+HZNlWgJvGe2cddrMOxc8yhvIQ3b2FRaVUTXLfPk7Noq7Vuvxr3tuHxPonbqk0A4AWyFVUTANCbbblBvPXbcR+PQBvaE+ROKyR1bRWjfaTQX5Klr9cHHza7w=='
 
 const tokenTtl = 1000 * 60 * 15
 export const completeLogin = async (loginToken: string) => {
