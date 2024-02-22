@@ -105,6 +105,7 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PULUMI_CONFIG_PASSPHRASE: ""
         run: |
+          find ${{ github.workspace }}/apps/web/code
           yarn deploy --filter=@rainbow-husky/www-app-infra
 
 #      - name: Test
