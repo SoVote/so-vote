@@ -10,7 +10,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "outputs": [".open-next/**", "!.open-next/cache/**", "dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
