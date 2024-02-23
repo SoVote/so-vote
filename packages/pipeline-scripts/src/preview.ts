@@ -24,7 +24,7 @@ export const definePreviewScript = (program: Command) => {
       exec(`pulumi stack select ${stack} -c`)
       exec(`pulumi config set branch-name "${branch}"`)
       exec(`pulumi config set pr-number "${prNumber}"`)
-      exec('pulumi preview')
+      exec('pulumi preview --diff')
       pulumiOutputsToGitHubAction(getPulumiOutputs())
       console.log('Done')
     })
