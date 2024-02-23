@@ -29,7 +29,7 @@ export const webServerLambda = new aws.lambda.Function(webServerLambdaName, {
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 1024,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
@@ -61,7 +61,7 @@ export const webImageOptimizationLambda = new aws.lambda.Function(webImageOptimi
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 1024,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
@@ -87,7 +87,7 @@ export const webCacheRevalidationLambda = new aws.lambda.Function(webCacheRevali
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 512,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
@@ -106,7 +106,7 @@ export const webWarmerLambda = new aws.lambda.Function(`${resourcePrefix}-lambda
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 512,
   timeout: 10,
   code: new pulumi.asset.AssetArchive({
