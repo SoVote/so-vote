@@ -32,5 +32,12 @@ async function parseToken(token: string) {
     secure: true,
     path: '/',
   })
+  cookies().set({
+    name: 'refresh_token',
+    value: response.refreshToken,
+    httpOnly: true,
+    secure: true,
+    path: '/',
+  })
   redirect('/login/complete', RedirectType.replace)
 }
