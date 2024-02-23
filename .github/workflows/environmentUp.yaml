@@ -99,13 +99,13 @@ jobs:
         run: |
           yarn build --filter=@rainbow-husky/web-app-code
 
-      - name: Preview
-        env:
-          PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PULUMI_CONFIG_PASSPHRASE: ""
-        run: |
-          yarn preview --filter=@rainbow-husky/www-app-infra
+#      - name: Preview
+#        env:
+#          PULUMI_STATE_S3_BUCKET: rainbow-husky-pulumi-state
+#          PR_NUMBER: ${{ github.event.pull_request.number }}
+#          PULUMI_CONFIG_PASSPHRASE: ""
+#        run: |
+#          yarn preview --filter=@rainbow-husky/www-app-infra
 
       - name: Deploy
         env:
