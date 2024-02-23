@@ -150,12 +150,19 @@ export const webDistribution = new cloudfront.Distribution(`${resourcePrefix}-cd
     compress: true,
     originRequestPolicyId: webOriginRequestPolicy.id,
     cachePolicyId: webServerCachePolicy.id,
+    fieldLevelEncryptionId: '',
     functionAssociations:[
       {
         eventType: 'viewer-request',
         functionArn: webHostTransformViewerRequestCfFunction.arn
       }
-    ]
+    ],
+    lambdaFunctionAssociations: [],
+    realtimeLogConfigArn: '',
+    responseHeadersPolicyId: '',
+    smoothStreaming: false,
+    trustedSigners: [],
+    trustedKeyGroups: [],
   },
   orderedCacheBehaviors: [
     {
