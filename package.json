@@ -6,6 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "preview": "dotenv -- turbo preview",
     "deploy": "dotenv -- turbo deploy",
     "destroy": "dotenv -- turbo destroy",
     "generate-web-env-vars": "turbo generate-web-env-vars"

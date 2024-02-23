@@ -8,6 +8,7 @@ import { defineSharedDeployScript } from "./deployShared";
 import { defineDeployWebScript } from "./deployWeb";
 import { defineDeployEnvScript } from "./deployEnv";
 import { defineGenerateWebEnvVarsScript } from "./generateWebEnvVars";
+import { definePreviewScript } from "./preview";
 
 const program = new Command()
 
@@ -23,5 +24,6 @@ defineSharedDeployScript(program)
 defineGlobalDeployScript(program)
 defineDestroyScript(program)
 defineGenerateWebEnvVarsScript(program)
+definePreviewScript(program)
 
 program.parse()

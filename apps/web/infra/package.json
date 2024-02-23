@@ -3,6 +3,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "",
+    "preview": "pipeline-scripts preview",
     "deploy": "pipeline-scripts deploy-web",
     "destroy": "pipeline-scripts destroy"
   },
