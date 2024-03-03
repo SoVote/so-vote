@@ -19,5 +19,9 @@
     "eslint-plugin-turbo": "^1.12.3",
     "next": "^14.1.0",
     "typescript": "^5.2.2"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "4.1.0"
   }
 }

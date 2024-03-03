@@ -16,5 +16,9 @@
         "@pulumi/awsx": "^2.5.0",
         "@pulumi/pulumi": "^3.105.0",
         "@rainbow-husky/pipeline-scripts": "workspace:^"
+    },
+    "volta": {
+        "node": "20.11.1",
+        "yarn": "4.1.0"
     }
 }

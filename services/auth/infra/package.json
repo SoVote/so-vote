@@ -1,18 +1,22 @@
 {
-    "name": "@rainbow-husky/auth-service-infra",
-    "main": "src/index.ts",
-    "scripts": {
-        "build": "",
-        "deploy": "pipeline-scripts deploy",
-        "destroy": "pipeline-scripts destroy"
-    },
-    "devDependencies": {
-        "@types/node": "^18"
-    },
-    "dependencies": {
-        "@pulumi/aws": "^6.21.0",
-        "@pulumi/awsx": "^2.5.0",
-        "@pulumi/pulumi": "^3.105.0",
-        "@rainbow-husky/pipeline-scripts": "workspace:^"
-    }
+  "name": "@rainbow-husky/auth-service-infra",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "",
+    "deploy": "pipeline-scripts deploy",
+    "destroy": "pipeline-scripts destroy"
+  },
+  "devDependencies": {
+    "@types/node": "^18"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6.21.0",
+    "@pulumi/awsx": "^2.5.0",
+    "@pulumi/pulumi": "^3.105.0",
+    "@rainbow-husky/pipeline-scripts": "workspace:^"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "4.1.0"
+  }
 }
