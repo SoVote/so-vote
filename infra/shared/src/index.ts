@@ -1,1 +1,3 @@
-import * as ssm from './ssm'
+import { authSecret } from "./ssm";
+
+export const authSecretArn = authSecret.arn
