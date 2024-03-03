@@ -1,3 +1,8 @@
-import { authSecret } from "./ssm";
+import { createAuthSecret } from "./ssm";
 
-export const authSecretArn = authSecret.arn
+export default async function(){
+  const authSecret = await createAuthSecret()
+  return {
+    authSecretArn: authSecret.arn
+  }
+}
