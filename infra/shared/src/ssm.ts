@@ -1,8 +1,8 @@
 import * as aws from "@pulumi/aws";
 import { sharedResourcePrefix } from "./variables";
-import { HMAC } from "oslo/crypto";
 
 export async function createAuthSecret() {
+  const { HMAC } = await import('oslo/crypto')
   const secret = await new HMAC("SHA-256").generateKey();
 
   const authSecretName = `${sharedResourcePrefix}-auth-secret`
