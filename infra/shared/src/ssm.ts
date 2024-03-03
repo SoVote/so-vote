@@ -5,7 +5,9 @@ import { HMAC } from "oslo/crypto";
 const secret = await new HMAC("SHA-256").generateKey();
 
 
-export const authSecret = new aws.ssm.Parameter(`${sharedResourcePrefix}-auth-secret`, {
+const authSecretName = `${sharedResourcePrefix}-auth-secret`
+export const authSecret = new aws.ssm.Parameter(authSecretName, {
+  name: authSecretName,
   type: "SecureString",
   value: new TextDecoder().decode(secret),
   description: "Auth secret used to sign JWTs",
