@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.484.0",
+    "@rainbow-husky/common-backend": "workspace:^",
     "@react-email/render": "^0.0.10",
     "date-fns": "^3.3.1",
     "oslo": "^1.1.2",
