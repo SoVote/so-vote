@@ -14,14 +14,16 @@ interface TokenBody {
 
 export const generateAuthEmailToken = async (email: string) => {
   const key = await ssm.getCachedSsmParameter(authSecretName)
-  const cipher = crypto.createCipheriv('aes-256-gcm', key, iv, { authTagLength })
+  const keyBuffer = Buffer.from(key, 'hex')
+  const cipher = crypto.createCipheriv('aes-256-gcm', keyBuffer, iv, { authTagLength })
   const body: TokenBody = { email, issued: new Date().toISOString() }
   return Buffer.concat([ cipher.update(JSON.stringify(body)), cipher.final(), cipher.getAuthTag()]).toString('hex')
 }
 
 export const parseAuthEmailToken = async (token: string): Promise<TokenBody> => {
   const key = await ssm.getCachedSsmParameter(authSecretName)
-  const decipher = crypto.createDecipheriv('aes-256-gcm', key, iv, { authTagLength });
+  const keyBuffer = Buffer.from(key, 'hex')
+  const decipher = crypto.createDecipheriv('aes-256-gcm', keyBuffer, iv, { authTagLength });
   const tokenBuffer = Buffer.from(token, 'hex')
   const bodyCutoffPosition = tokenBuffer.length - authTagLength
   const encryptedBody = tokenBuffer.subarray(0, bodyCutoffPosition)

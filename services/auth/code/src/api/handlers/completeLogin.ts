@@ -1,6 +1,5 @@
 import { parseAuthEmailToken } from "../authEmailTokenOperations";
 import { differenceInMilliseconds } from "date-fns";
-import '../../webCryptoPolyfill'
 import { createJWT } from 'oslo/jwt'
 import { TimeSpan } from "oslo";
 
@@ -10,7 +9,7 @@ const tokenTtl = 1000 * 60 * 15
 export const completeLogin = async (loginToken: string) => {
   let response;
   try {
-    const tokenBody = parseAuthEmailToken(loginToken)
+    const tokenBody = await parseAuthEmailToken(loginToken)
     const ms = differenceInMilliseconds(Date.now(), tokenBody.issued)
     if (ms > tokenTtl) {
       console.log('Token expired')

@@ -16,7 +16,7 @@ export const initiateLogin = async (email: string, environment: 'prod' | 'dev' |
     baseUrl = 'http://localhost:3000'
   } else throw new Error(`Unrecognised environment "${environment}" for branch "${process.env.BRANCH}"`)
 
-  const token = generateAuthEmailToken(email)
+  const token = await generateAuthEmailToken(email)
 
   const htmlContent = render(<MagicLinkEmail firstTime={false} token={token} baseUrl={baseUrl} />)
   const input = { // SendEmailRequest
