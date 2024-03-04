@@ -5,19 +5,24 @@ const authSecretName = `${sharedResourcePrefix}-auth-secret`
 export const authSecret = new aws.ssm.Parameter(authSecretName, {
   name: authSecretName,
   type: "SecureString",
-  value: generateKey(),
+  value: generateSecretHex(),
   description: "Auth secret used to sign JWTs",
 });
 
-async function generateKey(){
-  const cryptoKey: CryptoKey = await crypto.subtle.generateKey(
-    {
-      name: "HMAC",
-      hash: 'SHA-256'
-    },
+async function generateSecretHex(){
+  // Generate a random key
+  const key = await crypto.subtle.generateKey(
+    { name: "HMAC",
+      hash: 'SHA-256',
+      length: 256 },
     true,
     ["sign"]
   );
-  const key = await crypto.subtle.exportKey("raw", cryptoKey);
-  return new TextDecoder().decode(key)
+
+  // Export the key to an ArrayBuffer
+  const exportedKey = await crypto.subtle.exportKey("raw", key);
+  // Convert the ArrayBuffer to a Hex string
+  return Array.from(new Uint8Array(exportedKey))
+  .map(b => b.toString(16).padStart(2, '0'))
+  .join('');
 }
