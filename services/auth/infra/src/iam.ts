@@ -1,7 +1,7 @@
 import * as aws from "@pulumi/aws";
 import * as pulumi from '@pulumi/pulumi';
 import {lambdaLogGroup} from "./cloudwatch";
-import { accountNumber, resourcePrefix } from "./variables";
+import { accountNumber, isMain, resourcePrefix } from "./variables";
 
 export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-role`, {
   assumeRolePolicy: {
@@ -39,7 +39,7 @@ export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
     },
     {
       name: 'ses',
-      policy: lambdaLogGroup.arn.apply(arn => JSON.stringify({
+      policy: JSON.stringify({
         Version: "2012-10-17",
         Statement: [
           {
@@ -52,7 +52,24 @@ export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
             ]
           },
         ],
-      })),
+      }),
+    },
+    {
+      name: 'ssm',
+      policy: JSON.stringify({
+        Version: "2012-10-17",
+        Statement: [
+          {
+            Action: [
+              "ssm:GetParameter",
+            ],
+            Effect: "Allow",
+            Resource: [
+              `arn:aws:ssm:eu-west-1:${accountNumber}:parameter/rh-shared-${isMain ? 'prod' : 'dev'}-auth-secret`
+            ]
+          },
+        ],
+      }),
     },
   ]
 });
