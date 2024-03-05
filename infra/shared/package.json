@@ -3,15 +3,19 @@
     "main": "src/index.ts",
     "scripts": {
         "build": "",
-        "deploy": "infra-scripts deploy-shared"
+        "deploy": "pipeline-scripts deploy-shared"
     },
     "devDependencies": {
         "@types/node": "^16"
     },
     "dependencies": {
-        "@pulumi/aws": "^5.0.0",
-        "@pulumi/awsx": "^1.0.0",
-        "@pulumi/pulumi": "^3.0.0",
-        "@rainbow-husky/infra-scripts": "workspace:^"
+        "@pulumi/aws": "^6.21.0",
+        "@pulumi/awsx": "^2.5.0",
+        "@pulumi/pulumi": "^3.105.0",
+        "@rainbow-husky/pipeline-scripts": "workspace:^"
+    },
+    "volta": {
+        "node": "20.11.1",
+        "yarn": "4.1.0"
     }
 }

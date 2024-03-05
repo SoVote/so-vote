@@ -1,11 +1,15 @@
 {
   "name": "@rainbow-husky/email-templates",
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.1.0",
   "main": "src/index.ts",
   "dependencies": {
     "@rainbow-husky/common-ui": "workspace:^",
     "@react-email/components": "0.0.12",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "*",
+    "react-dom": "*"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "4.1.0"
   }
 }

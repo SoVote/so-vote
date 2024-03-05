@@ -1,8 +1,9 @@
 import * as aws from "@pulumi/aws";
+import * as pulumi from '@pulumi/pulumi';
 import {lambdaLogGroup} from "./cloudwatch";
-import {resourcePrefix} from "./variables";
+import { accountNumber, isMain, resourcePrefix } from "./variables";
 
-export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-role`, {
+export const authApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-role`, {
   assumeRolePolicy: {
     Version: '2012-10-17',
     Statement: [
@@ -17,7 +18,8 @@ export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
   },
   inlinePolicies: [
     {
-      policy: JSON.stringify({
+      name: 'logs',
+      policy: lambdaLogGroup.arn.apply(arn => JSON.stringify({
         Version: "2012-10-17",
         Statement: [
           {
@@ -27,10 +29,52 @@ export const userApiLambdaRole = new aws.iam.Role(`${resourcePrefix}-api-lambda-
               "logs:PutLogEvents",
             ],
             Effect: "Allow",
-            Resource: lambdaLogGroup.arn
+            Resource: [
+              arn,
+              `${arn}*`
+            ]
           },
         ],
-      })
+      })),
+    },
+    {
+      name: 'ses',
+      policy: JSON.stringify({
+        Version: "2012-10-17",
+        Statement: [
+          {
+            Action: [
+              "ses:SendEmail",
+            ],
+            Effect: "Allow",
+            Resource: [
+              `arn:aws:ses:eu-west-1:${accountNumber}:identity/*`
+            ]
+          },
+        ],
+      }),
+    },
+    {
+      name: 'ssm',
+      policy: JSON.stringify({
+        Version: "2012-10-17",
+        Statement: [
+          {
+            Action: [
+              "ssm:GetParameter",
+            ],
+            Effect: "Allow",
+            Resource: [
+              `arn:aws:ssm:eu-west-1:${accountNumber}:parameter/rh-shared-${isMain ? 'prod' : 'dev'}-auth-secret`
+            ]
+          },
+        ],
+      }),
     },
   ]
 });
+//
+// export const authApiLambdaRolePolicy = new aws.iam.RolePolicy(`${resourcePrefix}-api-lambda-role-policy`, {
+//   role: authApiLambdaRole.id,
+//   policy:
+// });

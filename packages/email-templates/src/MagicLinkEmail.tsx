@@ -1,6 +1,12 @@
 import { Logo } from '@rainbow-husky/common-ui'
 
-export const MagicLinkEmail = ({ firstTime = false }: { firstTime?: boolean}) => {
+interface MagicLinkEmailProps {
+  firstTime?: boolean,
+  token: string,
+  baseUrl: string
+}
+
+export const MagicLinkEmail = ({ firstTime = false, token, baseUrl }: MagicLinkEmailProps) => {
   return (
     <div className="flex items-center justify-center flex-col mt-5 p-5">
       <section className="max-w-2xl mx-auto border border-plum-jam">
@@ -27,7 +33,7 @@ export const MagicLinkEmail = ({ firstTime = false }: { firstTime?: boolean}) =>
             Otherwise, if do want to log in then click the link below.
           </p>
           <br />
-          <a href="https://www.tailwindtap.com/" className='block text-center w-full bg-plum-jam rounded p-4'>
+          <a href={`${baseUrl}/login/complete/${token}`} className='block text-center w-full bg-plum-jam rounded p-4'>
               Magic Link
           </a>
           <p className="mt-8 text-gray-600">

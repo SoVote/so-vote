@@ -1,6 +1,6 @@
 import * as aws from "@pulumi/aws";
 import * as pulumi from "@pulumi/pulumi";
-import { resourcePrefix, webDomain } from "./variables";
+import { branchName, isMain, prNumber, resourcePrefix, webDomain } from "./variables";
 import {webCacheBucket, webImageBucket} from "./s3";
 import {webCacheRevalidationQueue} from "./sqs";
 import {webCacheRevalidationTable} from "./dynamoDb";
@@ -22,15 +22,16 @@ export const webLambdaRole = new aws.iam.Role(`${resourcePrefix}-lambda-role`, {
 });
 
 
-export const webServerLambda = new aws.lambda.Function(`${resourcePrefix}-server`, {
+const webServerLambdaName = `${resourcePrefix}-server`
+export const webServerLambda = new aws.lambda.Function(webServerLambdaName, {
+  name: webServerLambdaName,
   description: 'Server Lambda for Next CloudFront distribution',
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 1024,
   timeout: 10,
-  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/server-function'),
   }),
@@ -41,6 +42,8 @@ export const webServerLambda = new aws.lambda.Function(`${resourcePrefix}-server
       REVALIDATION_QUEUE_URL: webCacheRevalidationQueue.url,
       REVALIDATION_QUEUE_REGION: webCacheBucket.region,
       CACHE_DYNAMO_TABLE: webCacheRevalidationTable.name,
+      NEXT_PUBLIC_PR_NUMBER: prNumber,
+      NEXT_PUBLIC_BRANCH: branchName
     }
   }
 });
@@ -51,15 +54,16 @@ export const webServerLambdaUrl = new aws.lambda.FunctionUrl(`${resourcePrefix}-
 })
 
 
-export const webImageOptimizationLambda = new aws.lambda.Function(`${resourcePrefix}-image-optimization`, {
+const webImageOptimizationLambdaName = `${resourcePrefix}-image-optimization`
+export const webImageOptimizationLambda = new aws.lambda.Function(webImageOptimizationLambdaName, {
+  name: webImageOptimizationLambdaName,
   description: 'Image Lambda for Next CloudFront distribution',
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 1024,
   timeout: 10,
-  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/image-optimization-function'),
   }),
@@ -76,15 +80,16 @@ export const webImageOptimisationLambdaUrl = new aws.lambda.FunctionUrl(`${resou
 })
 
 
-export const webCacheRevalidationLambda = new aws.lambda.Function(`${resourcePrefix}-cache-revalidation`, {
+const webCacheRevalidationLambdaName = `${resourcePrefix}-cache-revalidation`
+export const webCacheRevalidationLambda = new aws.lambda.Function(webCacheRevalidationLambdaName, {
+  name: webCacheRevalidationLambdaName,
   description: 'Lambda to revalidate the cache',
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 512,
   timeout: 10,
-  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/revalidation-function'),
   }),
@@ -101,10 +106,9 @@ export const webWarmerLambda = new aws.lambda.Function(`${resourcePrefix}-lambda
   role: webLambdaRole.arn,
   architectures: ['arm64'],
   handler: 'index.handler',
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs20.x',
   memorySize: 512,
   timeout: 10,
-  replacementSecurityGroupIds: [],
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive('../code/.open-next/warmer-function'),
   }),
@@ -173,7 +177,18 @@ const webLambdaPolicy = new aws.iam.Policy(`${resourcePrefix}-lambda-policy`, {
           'dynamodb:Query',
         ],
         Resource: [
-          webCacheRevalidationTable.arn
+          webCacheRevalidationTable.arn,
+          pulumi.interpolate`${webCacheRevalidationTable.arn}/*`
+        ]
+      },
+      {
+        Effect: 'Allow',
+        Action: [
+          'lambda:InvokeFunction',
+        ],
+        Resource: [
+          `arn:aws:lambda:eu-west-1:519396255280:function:rh-${isMain ? 'main' : `pr-${prNumber}`}-auth-api`,
+          `arn:aws:lambda:eu-west-1:519396255280:function:rh-${isMain ? 'main' : `pr-${prNumber}`}-user-api`,
         ]
       }
     ],

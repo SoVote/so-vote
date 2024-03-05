@@ -3,21 +3,21 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "",
-    "deploy": "infra-scripts deploy-global"
+    "deploy": "pipeline-scripts deploy-global"
   },
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.1.0",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "devDependencies": {
     "@types/node": "^18"
   },
   "dependencies": {
-    "@pulumi/aws": "^6.0.0",
-    "@pulumi/awsx": "^2.0.2",
-    "@pulumi/pulumi": "^3.0.0",
-    "@rainbow-husky/infra-scripts": "workspace:^"
+    "@pulumi/aws": "^6.21.0",
+    "@pulumi/awsx": "^2.5.0",
+    "@pulumi/pulumi": "^3.105.0",
+    "@rainbow-husky/pipeline-scripts": "workspace:^"
   }
 }

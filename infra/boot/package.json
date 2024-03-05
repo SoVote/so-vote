@@ -3,9 +3,9 @@
   "main": "src/index.ts",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.1.0",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "lint": "eslint . --fix"
@@ -15,8 +15,8 @@
     "eslint": "^8.56.0"
   },
   "dependencies": {
-    "@pulumi/aws": "^6.17.0",
-    "@pulumi/awsx": "^2.4.0",
-    "@pulumi/pulumi": "^3.100.0"
+    "@pulumi/aws": "^6.21.0",
+    "@pulumi/awsx": "^2.5.0",
+    "@pulumi/pulumi": "^3.105.0"
   }
 }

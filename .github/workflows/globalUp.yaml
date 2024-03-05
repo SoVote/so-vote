@@ -22,12 +22,12 @@ jobs:
       contents: read
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
       - name: Cache turbo build setup
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .turbo
           key: ${{ runner.os }}-turbo-${{ github.sha }}
@@ -35,9 +35,9 @@ jobs:
             ${{ runner.os }}-turbo-
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'yarn'
 
       - name: Install dependencies
@@ -51,7 +51,7 @@ jobs:
           role-session-name: AuthSession
 
       - name: Use Pulumi
-        uses: pulumi/actions@v4
+        uses: pulumi/actions@v5
 
       - name: Set up Pulumi
         run: |

@@ -48,7 +48,8 @@ export const ghActionsRole = new aws.iam.Role(`${resourcePrefix}-gh-actions-role
             'route53:*',
             'dynamodb:*',
             'cloudfront:*',
-            'sqs:*'
+            'sqs:*',
+            'ssm:*'
           ],
           Effect: 'Allow',
           Resource: '*',

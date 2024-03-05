@@ -1,5 +1,5 @@
-export default function CompleteLoginPage(){
+export default function LoginCompletePage(){
   return (
-    <div>Auth page</div>
+    <div>Login complete</div>
   )
 }

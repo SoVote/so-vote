@@ -2,26 +2,45 @@
   "name": "@rainbow-husky/auth-service-code",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.1.0",
   "scripts": {
-    "build": "tsc",
+    "build": "node esbuild.config.js",
     "test": "jest"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "devDependencies": {
     "@rainbow-husky/email-templates": "workspace:^",
     "@testing-library/react": "^14.1.2",
+    "@types/eslint": "^8.56.0",
     "@types/jest": "^29.5.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "aws-sdk-client-mock": "^3.0.0",
     "aws-sdk-client-mock-jest": "^3.0.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-turbo": "^1.12.3",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
+    "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.484.0",
-    "@react-email/render": "^0.0.10"
+    "@rainbow-husky/common-backend": "workspace:^",
+    "@react-email/render": "^0.0.10",
+    "date-fns": "^3.3.1",
+    "oslo": "^1.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "4.1.0"
   }
 }

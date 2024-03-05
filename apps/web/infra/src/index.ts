@@ -10,3 +10,5 @@ export const WEB_CACHE_BUCKET = s3.webCacheBucket.bucket
 export const WEB_IMAGE_BUCKET = s3.webImageBucket.bucket
 
 export const WEB_CLOUDFRONT_ID = cf.webDistribution.id
+
+export const WEB_DISTRIBUTION_DEFAULT_CACHE_BEHAVIOUR = cf.webDistribution.defaultCacheBehavior

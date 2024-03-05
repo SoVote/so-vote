@@ -1,0 +1,24 @@
+{
+  "name": "@rainbow-husky/pipeline-scripts",
+  "private": true,
+  "packageManager": "yarn@4.1.0",
+  "scripts": {
+    "build": "tsc",
+    "try": "node ./dist/index.js deploy"
+  },
+  "main": "dist/index.js",
+  "bin": "./dist/index.js",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:^",
+    "@types/node": "^20.11.17",
+    "@types/shelljs": "^0.8.15"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "4.1.0"
+  }
+}

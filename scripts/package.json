@@ -1,0 +1,31 @@
+{
+  "name": "@rainbow-husky/scripts",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "yarn@4.1.0",
+  "scripts": {
+    "ex": "ts-node"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.1.2",
+    "@types/eslint": "^8.56.0",
+    "@types/jest": "^29.5.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.484.0",
+    "@react-email/render": "^0.0.10"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "4.1.0"
+  }
+}

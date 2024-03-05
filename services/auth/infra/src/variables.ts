@@ -5,4 +5,5 @@ export const branchName = config.require('branch-name')
 export const isMain = branchName === 'main'
 export const prNumber = config.require('pr-number')
 export const resourcePrefix = `rh-${isMain ? 'main' : `pr-${prNumber}`}-auth`
-export const authApiSuffix = '-auth-api'
+export const authApiSuffix = '-api'
+export const accountNumber = '519396255280'

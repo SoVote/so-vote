@@ -140,9 +140,6 @@ export const webDistribution = new cloudfront.Distribution(`${resourcePrefix}-cd
     }
   },
   defaultCacheBehavior: {
-    minTtl: 0,
-    defaultTtl: 0,
-    maxTtl: 31536000,
     targetOriginId: serverLambdaOrigin.originId,
     viewerProtocolPolicy: 'redirect-to-https',
     allowedMethods: ['GET', 'HEAD', 'OPTIONS', 'PUT', 'POST', 'PATCH', 'DELETE'],
@@ -150,12 +147,13 @@ export const webDistribution = new cloudfront.Distribution(`${resourcePrefix}-cd
     compress: true,
     originRequestPolicyId: webOriginRequestPolicy.id,
     cachePolicyId: webServerCachePolicy.id,
+    fieldLevelEncryptionId: '',
     functionAssociations:[
       {
         eventType: 'viewer-request',
         functionArn: webHostTransformViewerRequestCfFunction.arn
       }
-    ]
+    ],
   },
   orderedCacheBehaviors: [
     {
