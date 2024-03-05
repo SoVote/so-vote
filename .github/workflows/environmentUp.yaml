@@ -57,11 +57,11 @@ jobs:
 #          pwd
 #          find ${{ github.workspace }}
 
-      - name: Cache next build setup
-        uses: actions/cache@v4
-        with:
-          path: ${{ github.workspace }}/apps/web/code/.open-next/cache
-          key: web-app-${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}
+#      - name: Cache next build setup
+#        uses: actions/cache@v4
+#        with:
+#          path: ${{ github.workspace }}/apps/web/code/.open-next/cache
+#          key: web-app-${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
