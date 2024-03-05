@@ -13,7 +13,9 @@ interface TokenBody {
 }
 
 export const generateAuthEmailToken = async (email: string) => {
+  console.log({ authSecretName })
   const key = await ssm.getCachedSsmParameter(authSecretName)
+  console.log({key})
   const keyBuffer = Buffer.from(key, 'hex')
   const cipher = crypto.createCipheriv('aes-256-gcm', keyBuffer, iv, { authTagLength })
   const body: TokenBody = { email, issued: new Date().toISOString() }
