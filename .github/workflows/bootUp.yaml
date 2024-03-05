@@ -43,7 +43,7 @@ jobs:
           role-session-name: AuthSession
 
       - name: Use Pulumi
-        uses: pulumi/actions@v4
+        uses: pulumi/actions@v5
 
       - name: Set up Pulumi
         run: |
